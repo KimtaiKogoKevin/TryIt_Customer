@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tryit_customer_app/screens/home/Widget/categories_list.dart';
 import 'package:tryit_customer_app/screens/home/Widget/custom_appBar.dart';
+import 'package:tryit_customer_app/screens/home/Widget/newarrival.dart';
 import 'package:tryit_customer_app/screens/home/Widget/searchInput.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
            const CustomAppBar() ,
             SearchInput(),
-            CategoryList('Category')
+            NewArrivals()
           ],
         ),
       ),
