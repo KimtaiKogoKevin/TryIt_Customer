@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryit_customer_app/models/Product.dart';
 
 class ProductItem extends StatelessWidget {
   final Product product;
 
-  ProductItem(this.product);
+   ProductItem(this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,6 @@ class ProductItem extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Stack(
                 children: [
@@ -26,7 +24,7 @@ class ProductItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(13),
                         image: DecorationImage(
                           image: AssetImage(product.imageUrl),
-                          fit: BoxFit.fill,
+                          fit: BoxFit.fitWidth,
                         )),
                   ),
                   Positioned(

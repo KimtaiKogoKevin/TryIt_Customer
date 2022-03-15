@@ -60,10 +60,10 @@ class SearchInput extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color:Theme.of(context).colorScheme.secondary
+                    color:Theme.of(context).colorScheme.primary
 
                   ),
-                          child: Text(e, style: TextStyle(color: Colors.grey)),
+                          child: Text(e, style: const TextStyle(color: Colors.white)),
                         ))
                     .toList()),
           )

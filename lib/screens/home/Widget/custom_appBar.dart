@@ -20,14 +20,14 @@ class _CustomAppBarState extends State<CustomAppBar> {
           Row(
             children: [
               RichText(
-                  text: const TextSpan(children: [
+                  text:  TextSpan(children: [
                 TextSpan(
                     text: 'Try something ',
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
+                        color: Theme.of(context).primaryColor,
+                        fontSize: 28,
                         fontWeight: FontWeight.bold)),
-                TextSpan(text: '👀', style: TextStyle(fontSize: 22)),
+                const TextSpan(text: '👀', style: TextStyle(fontSize: 22)),
               ]))
             ],
           ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tryit_customer_app/screens/home/Widget/productItem.dart';
 
 import '../../../models/Product.dart';
-import 'categories_list.dart';
+import 'sectionList.dart';
 
 class NewArrivals extends StatelessWidget {
   final productList = Product.generateProduct();
@@ -13,7 +13,7 @@ class NewArrivals extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          CategoryList('Category'),
+          SectionList('New Arrivals'),
           Container(
             height: 280,
             child: ListView.separated(

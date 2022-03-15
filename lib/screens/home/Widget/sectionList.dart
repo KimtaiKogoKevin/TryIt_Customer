@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CategoryList extends StatelessWidget {
+class SectionList extends StatelessWidget {
   final String title;
 
-  CategoryList(this.title, {Key? key}) : super(key: key);
+  SectionList(this.title, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
