@@ -10,7 +10,7 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SafeArea(
       child:     SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
