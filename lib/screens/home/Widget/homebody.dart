@@ -11,7 +11,8 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child:     SingleChildScrollView(
+      child:SingleChildScrollView(
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,6 +24,7 @@ class HomeBody extends StatelessWidget {
           ],
         ),
       ),
+
     );
   }
 }

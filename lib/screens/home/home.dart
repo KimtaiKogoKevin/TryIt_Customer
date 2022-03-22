@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tryit_customer_app/screens/Clips/clip.dart';
-import 'package:tryit_customer_app/screens/User/Myaccount.dart';
+import 'package:tryit_customer_app/screens/UserDirectory/Myaccount.dart';
 import 'package:tryit_customer_app/screens/category/categoryscreen.dart';
 import 'package:tryit_customer_app/screens/home/Widget/homebody.dart';
 import 'package:tryit_customer_app/screens/home/Widget/recommended.dart';
@@ -22,7 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
+
       body: pages[pageIndex],
+
 
       bottomNavigationBar: Container(
         height: 60,

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:tryit_customer_app/Authentication/wrapper.dart';
 import 'package:tryit_customer_app/screens/welcomeScreen.dart';
 class SplashScreen extends StatefulWidget {
 
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ()=>Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
                 (context) =>
-                WelcomeScreen()
+                Wrapper()
             )
         )
     );
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.white,
-        child: Image.asset('assets/images/logo.png',fit:BoxFit.cover),
+        child: Image.asset('assets/images/logo.png',fit:BoxFit.contain),
 
     );
   }
