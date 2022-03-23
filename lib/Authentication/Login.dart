@@ -6,14 +6,16 @@ import 'package:tryit_customer_app/Authentication/Signup.dart';
 import 'auth_file.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
 
     final authService = Provider.of<AuthService>(context);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -60,14 +62,21 @@ class LoginPage extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 40),
-                    child: Column(
-                      children: <Widget>[
-                        makeInput(label: "Email", controller: emailController),
-                        makeInput(
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: <Widget>[
+                          makeInput(
+                              label: "Email",
+                              controller: emailController,
+                          ),
+                          makeInput(
                             label: "Password",
                             obscureText: true,
-                            controller: passwordController),
-                      ],
+                            controller: passwordController,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Padding(
@@ -86,19 +95,27 @@ class LoginPage extends StatelessWidget {
                         minWidth: double.infinity,
                         height: 60,
                         onPressed: () async {
-                          try {
-                            await authService.signInWithEmailAndPassword(
-                                emailController.text, passwordController.text);
-                            Navigator.pushNamed(context, '/home');
-
-                          } on FirebaseAuthException catch (e) {
-                            showDialog(
-                              context: context,
-                              builder: (ctx) => AlertDialog(
-                                title: Text(' Ops! Login Failed'),
-                                content: Text('${e.message}'),
-                              ),
+                          if (_formKey.currentState!.validate()) {
+                            // If the form is valid, display a snackbar. In the real world,
+                            // you'd often call a server or save the information in a database.
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Processing Data')),
                             );
+
+                            try {
+                              await authService.signInWithEmailAndPassword(
+                                  emailController.text,
+                                  passwordController.text);
+                              Navigator.pushNamed(context, '/home');
+                            } on FirebaseAuthException catch (e) {
+                              showDialog(
+                                context: context,
+                                builder: (ctx) => AlertDialog(
+                                  title: Text(' Ops! Login Failed'),
+                                  content: Text('${e.message}'),
+                                ),
+                              );
+                            }
                           }
                         },
                         color: Colors.greenAccent,
@@ -117,15 +134,18 @@ class LoginPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       const Text("Don't have an account?"),
-                      ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/register');
-                          },
-                          child: const Text(
-                            "Sign up",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600, fontSize: 18),
-                          ))
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/register');
+                            },
+                            child: const Text(
+                              "Sign up",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 18),
+                            )),
+                      )
                     ],
                   )
                 ],
@@ -147,7 +167,10 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget makeInput(
-      {label, obscureText = false, required TextEditingController controller}) {
+      {
+      label,
+      obscureText = false,
+      required TextEditingController controller}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -159,7 +182,16 @@ class LoginPage extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        TextField(
+        TextFormField(
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Field cannot be null';
+            }
+            return null;
+          },
+          onChanged: (text){
+            Text(controller.text);
+          },
           controller: controller,
           obscureText: obscureText,
           decoration: InputDecoration(
@@ -178,3 +210,4 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+

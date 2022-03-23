@@ -5,10 +5,11 @@ import 'package:provider/provider.dart';
 import 'auth_file.dart';
 
 class SignupPage extends StatelessWidget {
+  final  TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    final  TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
 
     final authService = Provider.of<AuthService>(context);
     return Scaffold(
