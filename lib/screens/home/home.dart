@@ -3,7 +3,7 @@ import 'package:tryit_customer_app/screens/Clips/clip.dart';
 import 'package:tryit_customer_app/screens/UserDirectory/Myaccount.dart';
 import 'package:tryit_customer_app/screens/category/categoryscreen.dart';
 import 'package:tryit_customer_app/screens/home/Widget/homebody.dart';
-import 'package:tryit_customer_app/screens/home/Widget/recommended.dart';
+import 'package:tryit_customer_app/screens/home/Widget/recommendations.dart';
 import 'package:tryit_customer_app/screens/home/Widget/categories.dart';
 import 'package:tryit_customer_app/screens/home/Widget/custom_appBar.dart';
 import 'package:tryit_customer_app/screens/home/Widget/newarrival.dart';

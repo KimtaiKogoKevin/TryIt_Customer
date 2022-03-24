@@ -65,12 +65,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyCe36YKBqgzPJOhCoGT7Ih0v81Z6reLa7s',
-    appId: '1:428937200324:ios:4a2330fac494f984aa3f91',
+    appId: '1:428937200324:ios:e304aa49af213a82aa3f91',
     messagingSenderId: '428937200324',
     projectId: 'try-it-customerapp',
     storageBucket: 'try-it-customerapp.appspot.com',
     androidClientId: '428937200324-63otsvhj7f24e8dvih81gcs0smkkss4i.apps.googleusercontent.com',
-    iosClientId: '428937200324-4nq5cg0gqhmeig8gmlb06a9dmnsnm09t.apps.googleusercontent.com',
-    iosBundleId: 'com.macostryitcustomer.app',
+    iosClientId: '428937200324-hjr6416smpne6suagh32s0j1chv5l2uk.apps.googleusercontent.com',
+    iosBundleId: 'com.tryitcustomer.app',
   );
 }

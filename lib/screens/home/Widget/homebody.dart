@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tryit_customer_app/screens/home/Widget/recommended.dart';
+import 'package:tryit_customer_app/screens/home/Widget/recommendations.dart';
 import 'package:tryit_customer_app/screens/home/Widget/searchInput.dart';
 
 import 'custom_appBar.dart';
@@ -20,7 +20,7 @@ class HomeBody extends StatelessWidget {
             SearchInput(),
             //Categories(),
             NewArrivals(),
-            Recommended(),
+            //RecommendedItem(),
           ],
         ),
       ),

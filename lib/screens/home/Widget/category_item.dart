@@ -1,6 +1,8 @@
 import 'package:tryit_customer_app/models/Category.dart';
 import 'package:flutter/material.dart';
 
+import '../../../firebase_services.dart';
+
 class CategoryItem extends StatelessWidget {
    final Category category;
    CategoryItem(this.category);
@@ -22,7 +24,7 @@ class CategoryItem extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(13),
                         image: DecorationImage(
-                          image: AssetImage(category.imageUrl),
+                          image: AssetImage(category.image.toString()),
                           fit: BoxFit.fitWidth,
                         )),
                   ),
@@ -43,7 +45,7 @@ class CategoryItem extends StatelessWidget {
                 ],
               ),
               Text(
-                category.title,
+                category.catName.toString(),
                 style:
                 const TextStyle(fontWeight: FontWeight.bold, height: 1.5),
               ),

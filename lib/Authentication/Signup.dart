@@ -5,12 +5,11 @@ import 'package:provider/provider.dart';
 import 'auth_file.dart';
 
 class SignupPage extends StatelessWidget {
-  final  TextEditingController emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
     final authService = Provider.of<AuthService>(context);
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -91,7 +90,6 @@ class SignupPage extends StatelessWidget {
                         ),
                       );
                     }
-
                   },
                   color: Colors.greenAccent,
                   elevation: 0,
@@ -108,16 +106,14 @@ class SignupPage extends StatelessWidget {
                 children: <Widget>[
                   const Text("Already have an account?"),
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       Navigator.pushNamed(context, '/login');
                     },
-
-                    child:  const Text(
+                    child: const Text(
                       " Login",
                       style:
                           TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
-                    )
-          ,
+                    ),
                   )
                 ],
               ),
@@ -145,7 +141,8 @@ class SignupPage extends StatelessWidget {
           controller: controller,
           obscureText: obscureText,
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.grey.shade400)),
             border: OutlineInputBorder(
