@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/firestore.dart';
 import 'package:tryit_customer_app/models/Category.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:tryit_customer_app/screens/home/Widget/category/main_category_widget.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({Key? key}) : super(key: key);
@@ -33,6 +34,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         ],
       ),
       body: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
             width: 80,
@@ -42,28 +44,37 @@ class _CategoryScreenState extends State<CategoryScreen> {
               itemBuilder: (context, snapshot) {
                 Category category = snapshot.data();
                 return InkWell(
-                  onTap: (){
-                  setState(() {
-                    selectedCategory = category.catName;
-                  });
+                  onTap: () {
+                    setState(() {
+                      selectedCategory = category.catName;
+                    });
                   },
-                  child: SizedBox(
+                  child: Container(
                       height: 70,
+                      color: selectedCategory == category.catName
+                          ? Colors.white
+                          : Colors.grey.shade300,
                       child: Center(
                           child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Column(children: [
+                        child: Column(
+                           mainAxisSize:MainAxisSize.min,
+                            children: [
                           SizedBox(
                               height: 30,
                               child: CachedNetworkImage(
                                 imageUrl: category.image!,
-                                color: Colors.grey.shade700,
+                                color: selectedCategory == category.catName
+                                    ? Theme.of(context).primaryColor
+                                    : Colors.grey.shade700,
                               )),
                           Text(
                             category.catName!,
                             style: TextStyle(
-                                fontSize: 8,
-                                color: Colors.grey.shade700
+                              fontSize: 8,
+                              color: selectedCategory == category.catName
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.grey.shade700,
                             ),
                             textAlign: TextAlign.center,
                           )
@@ -72,6 +83,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 );
               },
             ),
+          ),
+          MainCategoryWidget(
+            selectedCat: selectedCategory,
           )
         ],
       ),

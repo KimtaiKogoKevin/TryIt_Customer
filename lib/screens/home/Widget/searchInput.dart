@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tryit_customer_app/screens/home/Widget/category/category_widget.dart';
 
 class SearchInput extends StatelessWidget {
   SearchInput({Key? key}) : super(key: key);
@@ -51,8 +52,9 @@ class SearchInput extends StatelessWidget {
               child: Image.asset('assets/icons/filter.png', width: 20),
             )
           ]),
-          Padding(
-            padding: const EdgeInsets.only(top:8.0),
+           Padding(
+            padding: EdgeInsets.only(top:2.0),
+            // child: CategoryWidget(),
             child: Row(
                 children: tagLists
                     .map((e) => Container(

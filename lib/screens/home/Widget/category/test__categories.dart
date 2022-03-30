@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tryit_customer_app/models/Category.dart';
-import 'package:tryit_customer_app/screens/home/Widget/category_item.dart';
+import 'package:tryit_customer_app/screens/home/Widget/category/category_item.dart';
 import 'package:tryit_customer_app/screens/home/Widget/sectionList.dart';
 
-import '../../../firebase_services.dart';
+import '../../../../firebase_services.dart';
 
 class Categories extends StatelessWidget {
   final FirebaseService _service = FirebaseService();
