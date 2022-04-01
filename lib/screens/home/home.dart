@@ -10,6 +10,10 @@ import 'package:tryit_customer_app/screens/home/Widget/newarrival.dart';
 import 'package:tryit_customer_app/screens/home/Widget/searchInput.dart';
 
 class HomeScreen extends StatefulWidget {
+  final int? index ;
+  const HomeScreen({this.index , Key? key}) : super(key: key);
+
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -17,7 +21,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int pageIndex = 0;
   final pages = [HomeBody(), CategoryScreen(),Clip(), MyAccount()];
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    if(widget.index!= null){
+      setState(() {
+        pageIndex = widget.index!;
+      });
+    }
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -20,7 +20,7 @@ class HomeBody extends StatelessWidget {
             const CustomAppBar(),
             SearchInput(),
             NewArrivals(),
-
+            const CategoryWidget()
             //RecommendedItem(),
           ],
         ),

@@ -8,7 +8,7 @@ class RproductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left:8),
+      margin: const EdgeInsets.all(8),
       child:  Card(
           margin: const EdgeInsets.symmetric(horizontal: 25),
           shape:

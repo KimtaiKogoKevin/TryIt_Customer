@@ -52,23 +52,23 @@ class SearchInput extends StatelessWidget {
               child: Image.asset('assets/icons/filter.png', width: 20),
             )
           ]),
-           Padding(
-            padding: EdgeInsets.only(top:2.0),
-            // child: CategoryWidget(),
-            child: Row(
-                children: tagLists
-                    .map((e) => Container(
-                  margin: const EdgeInsets.only(top:10,right:10),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color:Theme.of(context).colorScheme.primary
-
-                  ),
-                          child: Text(e, style: const TextStyle(color: Colors.white)),
-                        ))
-                    .toList()),
-          )
+          //  Padding(
+          //   padding: EdgeInsets.only(top:2.0),
+          //   // child: CategoryWidget(),
+          //   child: Row(
+          //       children: tagLists
+          //           .map((e) => Container(
+          //         margin: const EdgeInsets.only(top:10,right:10),
+          //         padding: const EdgeInsets.all(10),
+          //         decoration: BoxDecoration(
+          //           borderRadius: BorderRadius.circular(10),
+          //           color:Theme.of(context).colorScheme.primary
+          //
+          //         ),
+          //                 child: Text(e, style: const TextStyle(color: Colors.white)),
+          //               ))
+          //           .toList()),
+          // )
         ],
       )),
     );

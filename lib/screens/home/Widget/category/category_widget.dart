@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/firestore.dart';
+import 'package:tryit_customer_app/screens/home/home.dart';
 
 import '/models/Category.dart';
 
@@ -24,18 +25,17 @@ class _CategoryWidgetState extends State<CategoryWidget> {
 
 
     return Container(
-        margin: const EdgeInsets.only(top:10,right:10),
+        margin: const EdgeInsets.only(top:5),
         padding: const EdgeInsets.all(10),
 
         color: Colors.white ,
         child:Column(
             children: [
-              const SizedBox(height: 18,),
               const  Padding(
-                padding: const EdgeInsets.fromLTRB(0.0,10,0,10),
+                padding: EdgeInsets.fromLTRB(0.0,1,0,1),
                 child: Align(
                   alignment:Alignment.topLeft,
-                  child:Text('Browse Store Categories',
+                  child:Text('Categories',
                     style:TextStyle(
                       fontWeight:FontWeight.bold,
                       letterSpacing:0.5 ,
@@ -47,7 +47,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(0,0,0,8),
                 child:  SizedBox(
-                    height:40,
+                    height:60,
                     child:Row(
                         children:[
                           Expanded(
@@ -58,17 +58,17 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 itemBuilder: (context, snapshot) {
                                   Category category = snapshot.data();
                                   return Padding(
-                                    padding: const EdgeInsets.only(right: 4),
+                                    padding: const EdgeInsets.only(right: 1.5),
                                     child: ActionChip(
                                       padding: EdgeInsets.zero,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:BorderRadius.circular(4)
                                       ),
-                                      backgroundColor:selectedCategory == category.catName ? Colors.blue : Colors.grey,
+                                      backgroundColor: selectedCategory==category.catName ? Colors.grey : Theme.of(context).colorScheme.primary,
 
                                       label: Text(category.catName!, style: TextStyle(
                                           fontSize: 12,
-                                          color: selectedCategory==category.catName ? Colors.white : Colors.black
+                                          color: selectedCategory==category.catName ? Colors.black : Colors.grey.shade50
 
                                       )),
                                       onPressed: () {
@@ -115,6 +115,14 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                           IconButton(
                               onPressed: (){
                                 //show all categories
+                                Navigator.push (
+                                  context,
+                                  MaterialPageRoute (
+                                    builder: (BuildContext context) => const HomeScreen(
+                                      index: 1,
+                                    ),
+                                  ),
+                                );
                               },
                               icon: Icon(Icons.arrow_downward))
                         ]
