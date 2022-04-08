@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/firestore.dart';
@@ -64,8 +65,18 @@ class SubCategoryWidget extends StatelessWidget {
                           height: 40,
                           width: 40,
                           child: FittedBox(
-                              fit: BoxFit.fitHeight,
-                              child: Image.network(subCat.image!)),
+                              fit: BoxFit.contain,
+                              child: CachedNetworkImage(
+                                imageUrl:subCat.image!,
+                                placeholder: (context , _){
+                                  return Container(
+                                    height:60,
+                                    width:60,
+                                    color: Colors.grey.shade300,
+                                  );
+                                },
+                              ),
+                        ),
                         ),
                         Text(subCat.subCatName! , style: const TextStyle(fontSize: 12 ) , textAlign: TextAlign.center,)
                         ]);
