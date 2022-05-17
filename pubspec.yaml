@@ -43,6 +43,8 @@ dependencies:
   firebase_core: ^1.13.1
   flutterfire_ui: ^0.3.6+1
   cached_network_image: ^3.2.0
+  flutter_iconly: ^1.0.2
+  intl: ^0.17.0
 
 flutter_icons:
     android: "launcher_icon"

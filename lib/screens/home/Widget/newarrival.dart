@@ -6,7 +6,7 @@ import '../../../models/Product.dart';
 import 'sectionList.dart';
 
 class NewArrivals extends StatelessWidget {
-  final productList = Product.generateProduct();
+  // final productList = Product.generateProduct();
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +14,18 @@ class NewArrivals extends StatelessWidget {
       child: Column(
         children: [
           SectionList('New Arrivals'),
-          Container(
-            height: 280,
-            child: ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) =>
-                    ProductItem(productList[index]),
-                separatorBuilder: (_, index) => const SizedBox(
-                      width: 10,
-                    ),
-                itemCount: productList.length),
-          )
+          // Container(
+          //   height: 280,
+          //   child: ListView.separated(
+          //     padding: const EdgeInsets.symmetric(horizontal: 25),
+          //     scrollDirection: Axis.horizontal,
+          //       itemBuilder: (context, index) =>
+          //           ProductItem(productList[index]),
+          //       separatorBuilder: (_, index) => const SizedBox(
+          //             width: 10,
+          //           ),
+          //       itemCount: productList.length),
+          // )
         ],
       ),
     );
