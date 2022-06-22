@@ -6,13 +6,19 @@ import 'package:tryit_customer_app/Authentication/Signup.dart';
 import 'auth_file.dart';
 
 class LoginPage extends StatelessWidget {
+  static const  String routeName = '/login';
+  static Route route(){
+    return MaterialPageRoute(
+        settings: const RouteSettings(name:routeName),
+        builder: (_) =>  LoginPage());
+  }
   LoginPage({Key? key}) : super(key: key);
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
 
     final authService = Provider.of<AuthService>(context);
 

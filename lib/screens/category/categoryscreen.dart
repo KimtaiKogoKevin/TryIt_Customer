@@ -26,11 +26,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
         ),
         elevation: 0,
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black54),
+        iconTheme: const IconThemeData(color: Colors.black54),
         actions: [
-          IconButton(icon: Icon(Icons.search), onPressed: () {}),
-          IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
+          IconButton(icon: const Icon(Icons.search), onPressed: () {}),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
         ],
       ),
       body: Row(
@@ -57,9 +57,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       child: Center(
                           child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                           mainAxisSize:MainAxisSize.min,
-                            children: [
+                        child:
+                            Column(mainAxisSize: MainAxisSize.min, children: [
                           SizedBox(
                               height: 30,
                               child: CachedNetworkImage(

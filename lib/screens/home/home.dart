@@ -12,7 +12,12 @@ import 'package:tryit_customer_app/screens/home/Widget/searchInput.dart';
 class HomeScreen extends StatefulWidget {
   final int? index ;
   const HomeScreen({this.index , Key? key}) : super(key: key);
-
+  static const  String routeName = '/';
+  static Route route(){
+    return MaterialPageRoute(
+        settings: const RouteSettings(name:routeName),
+        builder: (_) =>  HomeScreen());
+  }
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -31,6 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     super.initState();
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,12 +51,12 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: BoxDecoration(
           color: Theme.of(context).primaryColor,
           borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
+            topLeft: Radius.circular(0),
+            topRight: Radius.circular(0),
           ),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(
               enableFeedback: false,

@@ -29,20 +29,17 @@ class _CategoryWidgetState extends State<CategoryWidget> {
         padding: const EdgeInsets.all(10),
         color: Colors.white,
         child: Column(children: [
-          const Padding(
-            padding: EdgeInsets.fromLTRB(0.0, 1, 0, 1),
+           Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 1, 0, 1),
             child: Align(
               alignment: Alignment.topLeft,
               child: Text(
                 'View By Categories',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 0.5,
-                  fontSize: 20,
-                ),
+                style:Theme.of(context).textTheme.headline2!.copyWith(color: Colors.blueGrey))
               ),
             ),
-          ),
+
+
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
             child: SizedBox(
@@ -57,7 +54,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                         itemBuilder: (context, snapshot) {
                           Category category = snapshot.data();
                           return Padding(
-                            padding: const EdgeInsets.only(right: 1.5),
+                            padding: const EdgeInsets.all(2.5),
                             child: ActionChip(
                               padding: EdgeInsets.zero,
                               shape: RoundedRectangleBorder(
@@ -84,38 +81,13 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                           );
                         },
                       )
-                          // ListView.builder(
-                          //   scrollDirection: Axis.horizontal,
-                          //
-                          //   itemCount:_categoryLabel.length,
-                          //   itemBuilder:(BuildContext context , int index){
-                          //     return Padding(
-                          //       padding: const EdgeInsets.only(right: 4),
-                          //       child: ActionChip(
-                          //         padding: EdgeInsets.zero,
-                          //         shape: RoundedRectangleBorder(
-                          //             borderRadius:BorderRadius.circular(4)
-                          //         ),
-                          //         backgroundColor:_index==index ? Colors.indigoAccent : Colors.black26 ,
-                          //         onPressed: () {
-                          //           setState(() {
-                          //             _index = index;
-                          //           });
-                          //         },
-                          //         label: Text(_categoryLabel[index], style: TextStyle(
-                          //             fontSize: 12,
-                          //             color: _index == index ?  Colors.white : Colors.black
-                          //
-                          //         )),
-                          //
-                          //       ),
-                          //     );
-                          //   },),
+
                           ),
+                      const SizedBox(width: 10,),
                       Container(
-                        decoration: BoxDecoration(
-                            border: Border(
-                                left: BorderSide(color: Colors.grey.shade400))),
+                        // decoration: BoxDecoration(
+                        //     border: Border(
+                        //         left: BorderSide(color: Colors.grey.shade400))),
                         child: IconButton(
                             onPressed: () {
                               //show all categories

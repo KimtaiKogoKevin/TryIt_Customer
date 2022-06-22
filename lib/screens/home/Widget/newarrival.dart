@@ -14,7 +14,7 @@ class NewArrivals extends StatelessWidget {
       child: Column(
         children: [
           SectionList('New Arrivals'),
-          // Container(
+          //Container(
           //   height: 280,
           //   child: ListView.separated(
           //     padding: const EdgeInsets.symmetric(horizontal: 25),

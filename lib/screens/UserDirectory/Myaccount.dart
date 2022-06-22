@@ -29,7 +29,7 @@ class MyAccount extends StatelessWidget {
                     onPressed: () async{
                       try{
                         await authService.signOut();
-                        Navigator.pushNamed(context, '/');
+                        Navigator.pushNamed(context, '/login');
 
                       }
                       on FirebaseAuthException catch (e) {

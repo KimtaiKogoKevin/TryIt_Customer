@@ -30,6 +30,16 @@ class Product {
         this.approved,
         this.productId});
 
+  static Product fromSnapshot(DocumentSnapshot snap){
+    Product  product = Product(
+      productName: snap['productName'],
+      discountPrice: snap['discountPrice'] ,
+      imageUrls: snap['imageUrls'],
+
+    );
+    return product;
+  }
+
   Product.fromJson(Map<String, Object?> json)
       : this(
     approved: json['approved']! == null ? null : json['approved'] as bool,

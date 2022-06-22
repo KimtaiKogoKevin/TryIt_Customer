@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:tryit_customer_app/Authentication/Signup.dart';
 import 'package:tryit_customer_app/Authentication/auth_file.dart';
+import 'package:tryit_customer_app/config/app_router.dart';
+import 'package:tryit_customer_app/models/CartController.dart';
 import 'package:tryit_customer_app/screens/home/home.dart';
 import 'package:tryit_customer_app/screens/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+import 'package:tryit_customer_app/config/theme.dart';
 
 import 'Authentication/Login.dart';
 import 'firebase_options.dart';
@@ -15,11 +19,13 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+ runApp(GetMaterialApp(
+     debugShowCheckedModeBanner: false,
+     home:MyApp()));
+ // runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -32,22 +38,19 @@ class MyApp extends StatelessWidget {
         providers: [
           Provider<AuthService>(create: (_) => AuthService()),
         ],
-        child: MaterialApp(
+      child:  MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          theme: ThemeData(
-            backgroundColor: const Color(0XFFFFFFFF),
-            primaryColor: const Color(0XFF0D47A1),
-            colorScheme: ColorScheme.fromSwatch()
-                .copyWith(secondary: const Color(0XFF18FFFF)),
-          ),
-          initialRoute: '/',
-          routes: {
-            '/': (context) => SplashScreen(),
-            '/login': (context) => LoginPage(),
-            '/register': (context) => SignupPage(),
-            '/home':(context) => HomeScreen()
-          },
+          theme: theme(),
+         // home: const HomeScreen(),
+           onGenerateRoute: AppRouter.onGenerateRoute,
+           initialRoute: HomeScreen.routeName,
+         //  routes: {
+         //    '/': (context) => SplashScreen(),
+         //    '/login': (context) => LoginPage(),
+         //    '/register': (context) => SignupPage(),
+         //    '/home':(context) => HomeScreen()
+         // },
         ));
   }
 }

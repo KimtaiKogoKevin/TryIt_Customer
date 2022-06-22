@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:tryit_customer_app/firebase_services.dart';
-
+import 'package:get/get.dart';
+import 'package:tryit_customer_app/models/CartController.dart';
+import 'package:tryit_customer_app/screens/home/Widget/products/cart_screen.dart';
 import '../../../../models/Product.dart';
+import '../../../../models/ProductController.dart';
 
 class ProductDetails extends StatefulWidget {
   final Product? product;
   final String? productId;
+  final int index;
 
-  const ProductDetails({Key? key, this.product, this.productId})
+
+  const ProductDetails({Key? key, this.product, this.productId , required this.index})
       : super(key: key);
 
   @override
@@ -18,7 +23,13 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
+
   FirebaseService service = FirebaseService();
+  final   ProductController productController =Get.find();
+
+  final cartController = Get.put(CartController());
+
+
 
   int? pageNo = 0;
 
@@ -377,7 +388,16 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+              //   onPressed: (){
+              //   Navigator.push(context, MaterialPageRoute(
+              //     builder: (BuildContext context) {
+              //       return CartScreen(
+              //
+              //       );
+              //     },
+              //   ));
+              // },
+                onPressed: () => Get.to(()=> CartScreen()),
                 child: const Text(
                   'Checkout',
                 ),
@@ -386,7 +406,9 @@ class _ProductDetailsState extends State<ProductDetails> {
               ),
               const SizedBox(width: 15),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  cartController.addProduct(widget.product!);
+                },
                 child: const Text(
                   'Add to cart',
                 ),
