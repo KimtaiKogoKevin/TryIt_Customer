@@ -105,13 +105,36 @@ class ProductScreen extends StatelessWidget {
         color: Theme.of(context).primaryColor,
         child: Container(
           height: 70,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.share ,color: Colors.white,)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.favorite, color: Colors.white,)),
-            ElevatedButton(onPressed: () {  },
-            child: Text('Add To Cart', style: Theme.of(context).textTheme.headline3!.copyWith(color: Colors.white),),)
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.share,
+                  color: Colors.white,
+                )),
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(
+                      context,
+                      '/wishlist'
+
+                      );
+                },
+                icon: const Icon(
+                  Icons.favorite,
+                  color: Colors.white,
+                )),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                'Add To Cart',
+                style: Theme.of(context)
+                    .textTheme
+                    .headline3!
+                    .copyWith(color: Colors.white),
+              ),
+            )
           ]),
         ),
       ),
