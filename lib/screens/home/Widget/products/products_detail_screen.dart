@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tryit_customer_app/blocs/wishlist/wishlist_bloc.dart';
 import 'package:tryit_customer_app/models/Product2.dart';
 import 'package:tryit_customer_app/screens/category/categoryCarouselCardItem.dart';
 import 'package:tryit_customer_app/screens/home/Widget/custom_appBar.dart';
@@ -46,7 +48,7 @@ class ProductScreen extends StatelessWidget {
                     margin: const EdgeInsets.all(5.0),
                     width: MediaQuery.of(context).size.width - 10,
                     height: 50,
-                    color: Colors.white,
+                    color: Theme.of(context).primaryColor,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Row(
@@ -56,8 +58,8 @@ class ProductScreen extends StatelessWidget {
                             product.name,
                             style: Theme.of(context)
                                 .textTheme
-                                .headline5!
-                                .copyWith(color: Colors.black87),
+                                .headline3!
+                                .copyWith(color: Colors.white),
                           ),
                           SizedBox(
                             width: 10,
@@ -65,8 +67,8 @@ class ProductScreen extends StatelessWidget {
                           Text('KSH ${product.price} ',
                               style: Theme.of(context)
                                   .textTheme
-                                  .headline5!
-                                  .copyWith(color: Colors.black87))
+                                  .headline4!
+                                  .copyWith(color: Colors.white))
                         ],
                       ),
                     ))
@@ -113,18 +115,27 @@ class ProductScreen extends StatelessWidget {
                   Icons.share,
                   color: Colors.white,
                 )),
-            IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                      context,
-                      '/wishlist'
-
-                      );
-                },
-                icon: const Icon(
+            BlocBuilder <WishlistBloc,WishlistState>(
+              builder: (context,state) {
+                if(state is WishlistLoading){
+                  return const Center(child:CircularProgressIndicator(color: Colors.black,),);
+                }
+                return IconButton(
+                  onPressed: () {
+                    const snackBar = SnackBar(
+                      content : Text ('Added to Favourites!'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    context.read<WishlistBloc>()
+                        .add(AddWishlistProduct(product));
+                    Navigator.pushNamed(context, '/wishlist');
+                  },
+                  icon:  const Icon(
                   Icons.favorite,
                   color: Colors.white,
-                )),
+                ));
+
+  }),
             ElevatedButton(
               onPressed: () {},
               child: Text(

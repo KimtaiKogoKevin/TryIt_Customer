@@ -14,7 +14,7 @@ class CartProductCard extends StatelessWidget {
 
    CartProductCard(
       {Key? key,
-        required this.index, required this.quantity,required this.controller , required this.product
+        required this.index, required this.quantity,required this.controller , required this.product ,
        })
       : super(key: key);
 

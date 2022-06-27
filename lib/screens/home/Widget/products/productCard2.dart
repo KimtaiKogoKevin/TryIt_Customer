@@ -3,17 +3,31 @@ import 'package:tryit_customer_app/models/Product2.dart';
 
 class ProductCard2 extends StatelessWidget {
   final Product2 product;
-  const ProductCard2({Key? key, required this.product}) : super(key: key);
+  final double leftPosition;
+  final double widthFactor;
+ final  bool isWishlist;
+
+  const ProductCard2({
+    Key? key,
+    required this.product,
+     this.isWishlist = false,
+    this.leftPosition = 5,
+    this.widthFactor = 2.5,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final double widthValue = MediaQuery
+        .of(context)
+        .size
+        .width / widthFactor;
     return InkWell(
-      onTap: (){
+      onTap: () {
         Navigator.pushNamed(context, '/product', arguments: product);
       },
       child: Stack(children: [
         Container(
-          width: MediaQuery.of(context).size.width / 2.5,
+          width: widthValue,
           height: 150,
           child: Image.network(
             product.imageUrl,
@@ -22,18 +36,18 @@ class ProductCard2 extends StatelessWidget {
         ),
         Positioned(
           top: 60,
-          left: 5,
+          left: leftPosition,
           child: Container(
-            width: MediaQuery.of(context).size.width / 2.5,
+            width: widthValue - 10,
             height: 80,
             decoration: BoxDecoration(color: Colors.black87.withAlpha(0)),
           ),
         ),
         Positioned(
           top: 90,
-          left: 0,
+          left: leftPosition + 5,
           child: Container(
-            width: MediaQuery.of(context).size.width / 2.5 - 10,
+            width: widthValue - 20 - leftPosition,
             height: 80,
             decoration: BoxDecoration(color: Colors.black.withAlpha(100)),
             child: Padding(
@@ -47,19 +61,36 @@ class ProductCard2 extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(product.name,
-                            style: Theme.of(context)
+                            style: Theme
+                                .of(context)
                                 .textTheme
                                 .headline4!
                                 .copyWith(color: Colors.white)),
                         Text('\KSH ${product.price}',
-                            style: Theme.of(context)
+                            style: Theme
+                                .of(context)
                                 .textTheme
                                 .headline6!
                                 .copyWith(color: Colors.white)),
                       ],
                     ),
                   ),
-                  Expanded(child: IconButton(onPressed: (){}, icon: const Icon(Icons.add_circle_outline_sharp ,color: Colors.white,)))
+                  Expanded(
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.add_circle_outline_sharp,
+                            color: Colors.white,
+                          ))),
+                  isWishlist ?
+                  Expanded(
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.delete_outline_outlined,
+                            color: Colors.white,
+                          ))) : SizedBox()
+
                 ],
               ),
             ),

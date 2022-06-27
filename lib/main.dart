@@ -10,8 +10,9 @@ import 'package:tryit_customer_app/screens/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:tryit_customer_app/config/theme.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'Authentication/Login.dart';
+import 'blocs/blocs.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -34,10 +35,10 @@ class MyApp extends StatelessWidget {
       statusBarColor: Colors.transparent,
     ));
 
-    return MultiProvider(
-        providers: [
-          Provider<AuthService>(create: (_) => AuthService()),
-        ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create:(_) => WishlistBloc()..add(StartWishlist()))
+      ] ,
       child:  MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
