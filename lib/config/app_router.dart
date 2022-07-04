@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tryit_customer_app/screens/home/Widget/products/cart_screen.dart';
 import 'package:tryit_customer_app/screens/home/Widget/products/products_detail_screen.dart';
 import 'package:tryit_customer_app/screens/home/home.dart';
 import 'package:tryit_customer_app/screens/wishlist_screen.dart';
 
 import '../Authentication/Login.dart';
 import '../models/Product2.dart';
+import '../screens/cart/cart_screen.dart';
 
 
 class AppRouter {

@@ -5,7 +5,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:tryit_customer_app/firebase_services.dart';
 import 'package:get/get.dart';
 import 'package:tryit_customer_app/models/CartController.dart';
-import 'package:tryit_customer_app/screens/home/Widget/products/cart_screen.dart';
+import 'package:tryit_customer_app/screens/home/Widget/products/cart_screendeprecated.dart';
 import '../../../../models/Product.dart';
 import '../../../../models/ProductController.dart';
 
@@ -397,7 +397,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               //     },
               //   ));
               // },
-                onPressed: () => Get.to(()=> CartScreen()),
+                onPressed: () => Get.to(()=> CartScreenDeprecated()),
                 child: const Text(
                   'Checkout',
                 ),

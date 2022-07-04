@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:tryit_customer_app/Authentication/Signup.dart';
 import 'package:tryit_customer_app/Authentication/auth_file.dart';
+import 'package:tryit_customer_app/blocs/cart/cart_bloc.dart';
 import 'package:tryit_customer_app/config/app_router.dart';
 import 'package:tryit_customer_app/models/CartController.dart';
 import 'package:tryit_customer_app/screens/home/home.dart';
@@ -37,7 +38,9 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create:(_) => WishlistBloc()..add(StartWishlist()))
+        BlocProvider(create:(_) => WishlistBloc()..add(StartWishlist())),
+        BlocProvider(create:(_) => CartBloc()..add((LoadCart())))
+
       ] ,
       child:  MaterialApp(
           debugShowCheckedModeBanner: false,

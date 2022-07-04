@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tryit_customer_app/blocs/cart/cart_bloc.dart';
 import 'package:tryit_customer_app/models/Product2.dart';
 
 class ProductCard2 extends StatelessWidget {
@@ -75,21 +77,44 @@ class ProductCard2 extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Expanded(
+                  BlocBuilder<CartBloc, CartState>(
+                    builder: (context , state){
+
+                      if(state is CartLoading){
+                        return const Center(
+                          child:CircularProgressIndicator(),
+                        );
+                      } else if (state is CartLoaded){
+                        return  Expanded(
+                            child: IconButton(
+                                onPressed: () {
+                                  context.read<CartBloc>()
+                       .add(AddProduct(product));
+                        },
+                                icon: const Icon(
+                                  Icons.add_circle_outline_sharp,
+                                  color: Colors.white,
+                                )));
+                      } else
+                        return Text('Something Wrong Occured');
+    } ,
+
+
+                  ),
+
+
+
+
+                  isWishlist ? Expanded(
                       child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.add_circle_outline_sharp,
-                            color: Colors.white,
-                          ))),
-                  isWishlist ?
-                  Expanded(
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.delete_outline_outlined,
-                            color: Colors.white,
-                          ))) : SizedBox()
+                      onPressed: () {},
+                      icon: const Icon(
+                      Icons.delete_outline_outlined,
+                      color: Colors.white,
+                      )))
+
+
+                   : SizedBox()
 
                 ],
               ),

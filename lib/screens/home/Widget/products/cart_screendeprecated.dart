@@ -8,23 +8,23 @@ import 'package:tryit_customer_app/screens/home/Widget/products/productCard.dart
 
 import '../../../../models/Product.dart';
 
-class CartScreen extends StatefulWidget {
+class CartScreenDeprecated extends StatefulWidget {
   final Product? product;
   final String? productId;
-  static const  String routeName = '/cart';
+  static const  String routeName = '/cartdeprecated';
   static Route route(){
     return MaterialPageRoute(
         settings: const RouteSettings(name:routeName),
-        builder: (_) =>  CartScreen());
+        builder: (_) =>  CartScreenDeprecated());
   }
 
-  CartScreen({Key? key , this.product, this.productId}) : super(key: key);
+  CartScreenDeprecated({Key? key , this.product, this.productId}) : super(key: key);
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
+  State<CartScreenDeprecated> createState() => _CartScreenDeprecatedState();
 }
 
-class _CartScreenState extends State<CartScreen> {
+class _CartScreenDeprecatedState extends State<CartScreenDeprecated> {
   final CartController controller = Get.find();
   @override
   void initState() {

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/wishlist/wishlist_bloc.dart';
 import '../models/Product2.dart';
+import 'home/Widget/customAppBar2.dart';
 import 'home/Widget/custom_appBar.dart';
 import 'home/Widget/products/productCard2.dart';
 
@@ -14,15 +15,14 @@ class WishlistScreen extends StatelessWidget {
   static Route route() {
     return MaterialPageRoute(
         settings: const RouteSettings(name: routeName),
-        builder: (_) => WishlistScreen());
+        builder: (_) => const WishlistScreen());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar(),
-        body:
-            BlocBuilder<WishlistBloc, WishlistState>(builder: (context, state) {
+        appBar: const CustomAppBar(),
+        body: BlocBuilder<WishlistBloc, WishlistState>(builder: (context, state) {
           if (state is WishlistLoading) {
             return const Center(
               child: CircularProgressIndicator(),
@@ -44,7 +44,7 @@ class WishlistScreen extends StatelessWidget {
                   );
                 });
           } else {
-            return Center(child: Text('Something Went Wrong'));
+            return const Center(child: Text('Something Went Wrong'));
           }
         }));
   }

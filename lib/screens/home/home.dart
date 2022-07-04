@@ -10,13 +10,15 @@ import 'package:tryit_customer_app/screens/home/Widget/newarrival.dart';
 import 'package:tryit_customer_app/screens/home/Widget/searchInput.dart';
 
 class HomeScreen extends StatefulWidget {
-  final int? index ;
-  const HomeScreen({this.index , Key? key}) : super(key: key);
-  static const  String routeName = '/';
-  static Route route(){
+  final int? index;
+
+  const HomeScreen({this.index, Key? key}) : super(key: key);
+  static const String routeName = '/';
+
+  static Route route() {
     return MaterialPageRoute(
-        settings: const RouteSettings(name:routeName),
-        builder: (_) =>  HomeScreen());
+        settings: const RouteSettings(name: routeName),
+        builder: (_) => HomeScreen());
   }
 
   @override
@@ -25,11 +27,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int pageIndex = 0;
-  final pages = [HomeBody(), CategoryScreen(),Clip(), MyAccount()];
+  final pages = [HomeBody(), CategoryScreen(), Clip(), MyAccount()];
+
   @override
   void initState() {
     // TODO: implement initState
-    if(widget.index!= null){
+    if (widget.index != null) {
       setState(() {
         pageIndex = widget.index!;
       });
@@ -37,14 +40,14 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+
       backgroundColor: Theme.of(context).backgroundColor,
 
       body: pages[pageIndex],
-
 
       bottomNavigationBar: Container(
         height: 60,
@@ -67,15 +70,15 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               icon: pageIndex == 0
                   ? const Icon(
-                Icons.home_filled,
-                color: Colors.white,
-                size: 35,
-              )
+                      Icons.home_filled,
+                      color: Colors.white,
+                      size: 35,
+                    )
                   : const Icon(
-                Icons.home_outlined,
-                color: Colors.white,
-                size: 35,
-              ),
+                      Icons.home_outlined,
+                      color: Colors.white,
+                      size: 35,
+                    ),
             ),
             IconButton(
               enableFeedback: false,
@@ -86,15 +89,15 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               icon: pageIndex == 1
                   ? const Icon(
-                Icons.work_rounded,
-                color: Colors.white,
-                size: 35,
-              )
+                      Icons.work_rounded,
+                      color: Colors.white,
+                      size: 35,
+                    )
                   : const Icon(
-                Icons.work_outline_outlined,
-                color: Colors.white,
-                size: 35,
-              ),
+                      Icons.work_outline_outlined,
+                      color: Colors.white,
+                      size: 35,
+                    ),
             ),
             IconButton(
               enableFeedback: false,
@@ -105,15 +108,15 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               icon: pageIndex == 2
                   ? const Icon(
-                Icons.widgets_rounded,
-                color: Colors.white,
-                size: 35,
-              )
+                      Icons.widgets_rounded,
+                      color: Colors.white,
+                      size: 35,
+                    )
                   : const Icon(
-                Icons.widgets_outlined,
-                color: Colors.white,
-                size: 35,
-              ),
+                      Icons.widgets_outlined,
+                      color: Colors.white,
+                      size: 35,
+                    ),
             ),
             IconButton(
               enableFeedback: false,
@@ -124,15 +127,15 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               icon: pageIndex == 3
                   ? const Icon(
-                Icons.person,
-                color: Colors.white,
-                size: 35,
-              )
+                      Icons.person,
+                      color: Colors.white,
+                      size: 35,
+                    )
                   : const Icon(
-                Icons.person_outline,
-                color: Colors.white,
-                size: 35,
-              ),
+                      Icons.person_outline,
+                      color: Colors.white,
+                      size: 35,
+                    ),
             ),
           ],
         ),
