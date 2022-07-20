@@ -1,4 +1,4 @@
-import 'package:tryit_customer_app/models/Category2.dart';
+import 'package:tryit_customer_app/models/Category.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/Product2.dart';
@@ -10,7 +10,7 @@ class CategoryCarouselCard extends StatelessWidget {
      this.category2,
      this.product2
   }) : super(key: key);
-  final Category2? category2;
+  final Category? category2;
   final Product2 ?product2;
 
 
@@ -22,7 +22,7 @@ class CategoryCarouselCard extends StatelessWidget {
           borderRadius: const BorderRadius.all(const Radius.circular(5.0)),
           child: Stack(
             children: <Widget>[
-              Image.network(product2== null ? category2!.imageUrl : product2!.imageUrl,
+              Image.network(product2== null ? category2!.image : product2!.imageUrl,
                   fit: BoxFit.cover, width: 1000.0),
               Positioned(
                 bottom: 0.0,
@@ -42,7 +42,7 @@ class CategoryCarouselCard extends StatelessWidget {
                   padding:
                   const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                   child: Text(
-                      product2 == null ? category2!.name : '',
+                      product2 == null ? category2!.catName : '',
                       style: Theme.of(context).textTheme.headline2!.copyWith(color: Colors.white)
                   ),
                 ),

@@ -3,7 +3,7 @@ import 'package:flutterfire_ui/firestore.dart';
 import 'package:tryit_customer_app/screens/home/home.dart';
 
 import '../productlist_home.dart';
-import '/models/Category.dart';
+import '/models/CategoryDeprecated.dart';
 
 class CategoryWidget extends StatefulWidget {
   const CategoryWidget({Key? key}) : super(key: key);
@@ -48,11 +48,11 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                          child: FirestoreListView<Category>(
+                          child: FirestoreListView<CategoryDeprecated>(
                         scrollDirection: Axis.horizontal,
                         query: categoriesCollection,
                         itemBuilder: (context, snapshot) {
-                          Category category = snapshot.data();
+                          CategoryDeprecated category = snapshot.data();
                           return Padding(
                             padding: const EdgeInsets.all(2.5),
                             child: ActionChip(

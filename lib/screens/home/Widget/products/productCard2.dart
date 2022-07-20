@@ -7,22 +7,19 @@ class ProductCard2 extends StatelessWidget {
   final Product2 product;
   final double leftPosition;
   final double widthFactor;
- final  bool isWishlist;
+  final bool isWishlist;
 
   const ProductCard2({
     Key? key,
     required this.product,
-     this.isWishlist = false,
+    this.isWishlist = false,
     this.leftPosition = 5,
     this.widthFactor = 2.5,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final double widthValue = MediaQuery
-        .of(context)
-        .size
-        .width / widthFactor;
+    final double widthValue = MediaQuery.of(context).size.width / widthFactor;
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, '/product', arguments: product);
@@ -63,14 +60,12 @@ class ProductCard2 extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(product.name,
-                            style: Theme
-                                .of(context)
+                            style: Theme.of(context)
                                 .textTheme
                                 .headline4!
                                 .copyWith(color: Colors.white)),
                         Text('\KSH ${product.price}',
-                            style: Theme
-                                .of(context)
+                            style: Theme.of(context)
                                 .textTheme
                                 .headline6!
                                 .copyWith(color: Colors.white)),
@@ -78,44 +73,39 @@ class ProductCard2 extends StatelessWidget {
                     ),
                   ),
                   BlocBuilder<CartBloc, CartState>(
-                    builder: (context , state){
-
-                      if(state is CartLoading){
+                    
+                    builder: (context, state) {
+                      if (state is CartLoading) {
                         return const Center(
-                          child:CircularProgressIndicator(),
+                          child: CircularProgressIndicator(),
                         );
-                      } else if (state is CartLoaded){
-                        return  Expanded(
+                      } else if (state is CartLoaded) {
+                        return Expanded(
                             child: IconButton(
                                 onPressed: () {
-                                  context.read<CartBloc>()
-                       .add(AddProduct(product));
-                        },
+                                  context
+                                      .read<CartBloc>()
+                                      .add(AddProduct(product));
+                                  const snackBar = SnackBar(content: Text('Added to cart'));
+                                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                },
                                 icon: const Icon(
                                   Icons.add_circle_outline_sharp,
                                   color: Colors.white,
                                 )));
                       } else
                         return Text('Something Wrong Occured');
-    } ,
-
-
+                    },
                   ),
-
-
-
-
-                  isWishlist ? Expanded(
-                      child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                      Icons.delete_outline_outlined,
-                      color: Colors.white,
-                      )))
-
-
-                   : SizedBox()
-
+                  isWishlist
+                      ? Expanded(
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.delete_outline_outlined,
+                                color: Colors.white,
+                              )))
+                      : SizedBox()
                 ],
               ),
             ),

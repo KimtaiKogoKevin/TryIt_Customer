@@ -96,11 +96,13 @@ class CartScreen extends StatelessWidget {
                       SizedBox(
                         height: 400,
                         child: ListView.builder(
-                          itemCount: state.cart.products.length,
+                          itemCount: state.cart.productQuantity(state.cart.products).keys.length,
                           itemBuilder: (context, index) {
                             return CartProductCard(
-                                product: state.cart.products[index]);
-                          },
+                                product: state.cart.productQuantity(state.cart.products).keys.elementAt(index),
+                                 quantity:  state.cart.productQuantity(state.cart.products).values.elementAt(index)
+                            );
+                          }
                         ),
                       ),
                     ],
@@ -197,8 +199,9 @@ class CartScreen extends StatelessWidget {
 }
 
 class CartProductCard extends StatelessWidget {
-  const CartProductCard({Key? key, required this.product}) : super(key: key);
+  const CartProductCard({Key? key, required this.product , required this.quantity}) : super(key: key);
   final Product2 product;
+  final int quantity;
 
   @override
   Widget build(BuildContext context) {
@@ -242,8 +245,8 @@ class CartProductCard extends StatelessWidget {
                         },
                         icon: const Icon(Icons.remove_circle_outline_sharp)),
                     Text(
-                      '1',
-                      style: Theme.of(context).textTheme.headline5,
+                      '$quantity' ,
+                      style: Theme.of(context).textTheme.headline4,
                     ),
                     IconButton(
                         onPressed: () {

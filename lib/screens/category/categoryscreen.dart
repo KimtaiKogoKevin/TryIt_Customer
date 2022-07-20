@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/firestore.dart';
-import 'package:tryit_customer_app/models/Category.dart';
+import 'package:tryit_customer_app/models/CategoryDeprecated.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:tryit_customer_app/screens/home/Widget/category/main_category_widget.dart';
 
@@ -39,10 +39,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
           Container(
             width: 80,
             color: Colors.grey.shade300,
-            child: FirestoreListView<Category>(
+            child: FirestoreListView<CategoryDeprecated>(
               query: categoriesCollection,
               itemBuilder: (context, snapshot) {
-                Category category = snapshot.data();
+                CategoryDeprecated category = snapshot.data();
                 return InkWell(
                   onTap: () {
                     setState(() {

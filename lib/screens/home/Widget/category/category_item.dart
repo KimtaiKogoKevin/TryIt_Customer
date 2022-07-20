@@ -1,10 +1,10 @@
-import 'package:tryit_customer_app/models/Category.dart';
+import 'package:tryit_customer_app/models/CategoryDeprecated.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../firebase_services.dart';
 
 class CategoryItem extends StatelessWidget {
-   final Category category;
+   final CategoryDeprecated category;
    CategoryItem(this.category);
   @override
   Widget build(BuildContext context) {

@@ -1,39 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equatable/equatable.dart';
 
-import '../firebase_services.dart';
+import 'CategoryDeprecated.dart';
 
-class SubCategory {
-  SubCategory( {  required this.image ,   required this.mainCategory, required this.subCatName});
+class SubCategory extends Equatable {
+  final String image;
+  final String mainCategory;
+  final String subCatName;
 
-  SubCategory.fromJson(Map<String, Object?> json)
-      : this(
-    image: json['image']! as String,
-    mainCategory: json['mainCategory']! as String,
+  const SubCategory({required this.mainCategory, required this.image,required this.subCatName});
 
-    subCatName: json['subCatName']! as String,
+  @override
+  // TODO: implement props
+  List<Object?> get props => [image, mainCategory,subCatName];
 
-
-  );
-
-  final String? image;
-  final String? mainCategory;
-  final String? subCatName;
-
-
-  Map<String, Object?> toJson() {
-    return {
-      'image': image,
-      'mainCategory': mainCategory,
-      'subCatName': subCatName,
-
-
-    };
+  static SubCategory fromSnapshot(DocumentSnapshot snap) {
+    SubCategory subCategory = SubCategory(
+        image: snap['image'], mainCategory: snap['mainCategory'],subCatName: snap['subCatName']);
+    return subCategory;
   }
 }
-FirebaseService _service = FirebaseService();
-  subCategoriesCollection( {subCatSelected}) {
-  return _service.subCategories.where('active',isEqualTo: true).where('mainCategory',isEqualTo:subCatSelected).withConverter<SubCategory>(
-     fromFirestore: (snapshot, _) => SubCategory.fromJson(snapshot.data()!),
-     toFirestore: (categories, _) => categories.toJson(),
-   );
- }

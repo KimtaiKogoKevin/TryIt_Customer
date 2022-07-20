@@ -1,30 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equatable/equatable.dart';
 
-import '../firebase_services.dart';
+import 'CategoryDeprecated.dart';
 
-class MainCategory {
-  MainCategory({required this.category, required this.mainCategory});
+class MainCategory extends Equatable {
+  final String category;
+  final String mainCategory;
 
-  MainCategory.fromJson(Map<String, Object?> json)
-      : this(
-    category: json['category']! as String,
-    mainCategory: json['mainCategory']! as String,
-  );
+  const MainCategory({required this.category, required this.mainCategory});
 
-  final String? category;
-  final String? mainCategory;
+  @override
+  // TODO: implement props
+  List<Object?> get props => [category, mainCategory];
 
-  Map<String, Object?> toJson() {
-    return {
-      'category': category,
-      'mainCategory': mainCategory,
-    };
+  static MainCategory fromSnapshot(DocumentSnapshot snap) {
+    MainCategory mainCategory = MainCategory(
+        category: snap['category'], mainCategory: snap['mainCategory']);
+    return mainCategory;
   }
 }
-FirebaseService _service = FirebaseService();
- mainCategoriesCollection (selectedCat){
-  return _service.mainCategories.where('approved',isEqualTo: true).where('category',isEqualTo: selectedCat).withConverter<MainCategory>(
-       fromFirestore: (snapshot, _) => MainCategory.fromJson(snapshot.data()!),
-   toFirestore: (categories, _) => categories.toJson() , );
- }
-

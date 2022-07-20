@@ -1,4 +1,4 @@
-import 'dart:io';
+ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/firestore.dart';
 
 import '../../../../models/MainCategory.dart';
-import '../../../../models/SubCategory.dart';
+import '../../../../models/SubCategoryDeprecated.dart';
 
 class SubCategoryWidget extends StatelessWidget {
   final String? selectedSubCat;
@@ -24,7 +24,7 @@ class SubCategoryWidget extends StatelessWidget {
 
           Expanded(
 
-              child: FirestoreQueryBuilder<SubCategory>(
+              child: FirestoreQueryBuilder<SubCategoryDeprecated>(
                   query: subCategoriesCollection(subCatSelected: selectedSubCat),
                   builder: (context, snapshot, _) {
                     if (snapshot.isFetching) {

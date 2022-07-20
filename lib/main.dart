@@ -6,6 +6,7 @@ import 'package:tryit_customer_app/Authentication/auth_file.dart';
 import 'package:tryit_customer_app/blocs/cart/cart_bloc.dart';
 import 'package:tryit_customer_app/config/app_router.dart';
 import 'package:tryit_customer_app/models/CartController.dart';
+import 'package:tryit_customer_app/repositories/category_repository.dart';
 import 'package:tryit_customer_app/screens/home/home.dart';
 import 'package:tryit_customer_app/screens/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,6 +15,7 @@ import 'package:tryit_customer_app/config/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'Authentication/Login.dart';
 import 'blocs/blocs.dart';
+import 'blocs/catgeory/category_bloc.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -21,10 +23,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
- runApp(GetMaterialApp(
-     debugShowCheckedModeBanner: false,
-     home:MyApp()));
- // runApp(MyApp());
+ // runApp(GetMaterialApp(
+ //     debugShowCheckedModeBanner: false,
+ //     home:MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -39,7 +41,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create:(_) => WishlistBloc()..add(StartWishlist())),
-        BlocProvider(create:(_) => CartBloc()..add((LoadCart())))
+        BlocProvider(create:(_) => CartBloc()..add((LoadCart()))),
+        BlocProvider(create:(_) => CategoryBloc(categoryRepository: CategoryRepository())..add((LoadCategories())))
+
 
       ] ,
       child:  MaterialApp(

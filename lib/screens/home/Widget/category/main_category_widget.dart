@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/firestore.dart';
-import 'package:tryit_customer_app/models/SubCategory.dart';
+import 'package:tryit_customer_app/models/MainCategoryDepracated.dart';
+import 'package:tryit_customer_app/models/SubCategoryDeprecated.dart';
 import 'package:tryit_customer_app/screens/home/Widget/category/sub_category_widget.dart';
 
 import '../../../../models/MainCategory.dart';
@@ -26,10 +27,10 @@ class _MainCategoryWidgetState extends State<MainCategoryWidget> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-          child: FirestoreListView<MainCategory>(
+          child: FirestoreListView<MainCategoryDeprecated>(
             query: mainCategoriesCollection(widget.selectedCat),
             itemBuilder: (context, snapshot) {
-              MainCategory mainCategory = snapshot.data();
+              MainCategoryDeprecated mainCategory = snapshot.data();
               return ExpansionTile(
                   title: Text(mainCategory.mainCategory!) ,
                   children: [SubCategoryWidget(selectedSubCat: mainCategory.mainCategory)]
