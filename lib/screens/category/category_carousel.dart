@@ -35,7 +35,9 @@ class CategoryCarousel extends StatelessWidget {
             );
 
           }
-          else {} return const Text('Something Went Wrong');
+          else {
+            return const Text('Something Went Wrong');
+          }
     }
       ),
     );

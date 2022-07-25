@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-import 'Product2.dart';
+import 'Product.dart';
 
 class Cart extends Equatable {
-  final List<Product2>products;
-   const Cart({this.products = const <Product2>[]});
+  final List<Product>products;
+   const Cart({this.products = const <Product>[]});
 
   @override
   // TODO: implement props
@@ -25,7 +25,7 @@ class Cart extends Equatable {
 
   }
   double get subtotal =>
-      products.fold(0, (total, current) => total + current.price);
+      products.fold(0, (total, current) => total + current.regularPrice!);
 
   String get subtotalString => subtotal.toStringAsFixed(2);
 

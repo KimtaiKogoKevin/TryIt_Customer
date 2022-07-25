@@ -10,7 +10,7 @@ abstract class WishlistEvent extends Equatable {
 class StartWishlist extends WishlistEvent {}
 
 class AddWishlistProduct extends WishlistEvent {
-  final Product2 product;
+  final Product product;
 
   const AddWishlistProduct(this.product);
 
@@ -19,7 +19,7 @@ class AddWishlistProduct extends WishlistEvent {
 }
 
 class RemoveWishlistProduct extends WishlistEvent {
-  final Product2 product;
+  final Product product;
 
   const RemoveWishlistProduct(this.product);
 

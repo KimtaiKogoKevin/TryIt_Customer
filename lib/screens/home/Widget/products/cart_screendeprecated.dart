@@ -6,10 +6,10 @@ import 'package:tryit_customer_app/models/ProductController.dart';
 import 'package:tryit_customer_app/screens/home/Widget/products/cart_total.dart';
 import 'package:tryit_customer_app/screens/home/Widget/products/productCard.dart';
 
-import '../../../../models/Product.dart';
+import '../../../../models/ProductDepracated.dart';
 
 class CartScreenDeprecated extends StatefulWidget {
-  final Product? product;
+  final ProductDepracated? product;
   final String? productId;
   static const  String routeName = '/cartdeprecated';
   static Route route(){

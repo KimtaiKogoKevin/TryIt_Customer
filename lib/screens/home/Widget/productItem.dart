@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tryit_customer_app/models/Product.dart';
+import 'package:tryit_customer_app/models/ProductDepracated.dart';
 
 class ProductItem extends StatelessWidget {
-  final Product product;
+  final ProductDepracated product;
 
    ProductItem(this.product);
 

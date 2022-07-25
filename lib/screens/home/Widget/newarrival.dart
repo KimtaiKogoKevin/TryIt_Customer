@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tryit_customer_app/screens/home/Widget/productItem.dart';
 
-import '../../../models/Product.dart';
+import '../../../models/ProductDepracated.dart';
 import 'sectionList.dart';
 
 class NewArrivals extends StatelessWidget {

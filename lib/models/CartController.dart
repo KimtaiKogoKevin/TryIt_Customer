@@ -4,7 +4,7 @@ import 'dart:ffi';
 import 'package:get/get.dart';
 
 import '../firebase_services.dart';
-import 'Product.dart';
+import 'ProductDepracated.dart';
 
 class CartController extends GetxController {
   // Add a dict to store the products in the cart
@@ -14,7 +14,7 @@ class CartController extends GetxController {
   FirebaseService service = FirebaseService();
 
   //add product to cart
-  void addProduct(Product product) {
+  void addProduct(ProductDepracated product) {
     if (_products.containsKey(product)) {
       _products[product] += 1;
       print(_products);
@@ -28,7 +28,7 @@ class CartController extends GetxController {
   }
 
   //remove Product
-  void removeProduct(Product product) {
+  void removeProduct(ProductDepracated product) {
     if (_products.containsKey(product) && _products[product] == 1) {
       _products.removeWhere((key, value) => key == product);
       Get.snackbar("No Items in Basket!", "Shopping Cart is Empty",

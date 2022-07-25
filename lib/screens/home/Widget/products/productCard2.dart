@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tryit_customer_app/blocs/cart/cart_bloc.dart';
-import 'package:tryit_customer_app/models/Product2.dart';
+import 'package:tryit_customer_app/models/Product.dart';
 
 class ProductCard2 extends StatelessWidget {
-  final Product2 product;
+  final Product product;
   final double leftPosition;
   final double widthFactor;
   final bool isWishlist;
@@ -29,7 +29,7 @@ class ProductCard2 extends StatelessWidget {
           width: widthValue,
           height: 150,
           child: Image.network(
-            product.imageUrl,
+            product.imageUrls![0],
             fit: BoxFit.cover,
           ),
         ),
@@ -38,12 +38,12 @@ class ProductCard2 extends StatelessWidget {
           left: leftPosition,
           child: Container(
             width: widthValue - 10,
-            height: 80,
+            height: 100,
             decoration: BoxDecoration(color: Colors.black87.withAlpha(0)),
           ),
         ),
         Positioned(
-          top: 90,
+          top: 70,
           left: leftPosition + 5,
           child: Container(
             width: widthValue - 20 - leftPosition,
@@ -59,12 +59,12 @@ class ProductCard2 extends StatelessWidget {
                     flex: 3,
                     child: Column(
                       children: [
-                        Text(product.name,
+                        Text(product.brandName.toString(),
                             style: Theme.of(context)
                                 .textTheme
                                 .headline4!
                                 .copyWith(color: Colors.white)),
-                        Text('\KSH ${product.price}',
+                        Text('\KSH ${product.regularPrice}',
                             style: Theme.of(context)
                                 .textTheme
                                 .headline6!
@@ -73,7 +73,7 @@ class ProductCard2 extends StatelessWidget {
                     ),
                   ),
                   BlocBuilder<CartBloc, CartState>(
-                    
+
                     builder: (context, state) {
                       if (state is CartLoading) {
                         return const Center(

@@ -4,7 +4,7 @@ import 'package:tryit_customer_app/screens/home/home.dart';
 import 'package:tryit_customer_app/screens/wishlist_screen.dart';
 
 import '../Authentication/Login.dart';
-import '../models/Product2.dart';
+import '../models/Product.dart';
 import '../screens/cart/cart_screen.dart';
 
 
@@ -21,7 +21,7 @@ class AppRouter {
       case CartScreen.routeName:
         return CartScreen.route();
       case ProductScreen.routeName:
-        return ProductScreen.route(product: settings.arguments as Product2);
+        return ProductScreen.route(product: settings.arguments as Product);
       case WishlistScreen.routeName:
         return WishlistScreen.route();
 

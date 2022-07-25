@@ -13,7 +13,7 @@ class LoadCart extends CartEvent {
 }
 
 class AddProduct extends CartEvent {
-  final Product2 product;
+  final Product product;
 
   const AddProduct(this.product);
 
@@ -22,7 +22,7 @@ class AddProduct extends CartEvent {
 }
 
 class RemoveProduct extends CartEvent {
-  final Product2 product;
+  final Product product;
 
   const RemoveProduct(this.product);
 

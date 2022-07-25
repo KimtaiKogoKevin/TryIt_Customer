@@ -5,7 +5,7 @@ import 'package:flutterfire_ui/firestore.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:tryit_customer_app/firebase_services.dart';
-import 'package:tryit_customer_app/models/Product.dart';
+import 'package:tryit_customer_app/models/ProductDepracated.dart';
 import '../../../models/CartController.dart';
 import '../../../models/ProductController.dart';
 import 'products/product_detail_screen.dart';
@@ -21,7 +21,7 @@ class ProductList extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-        child: FirestoreQueryBuilder<Product>(
+        child: FirestoreQueryBuilder<ProductDepracated>(
           query: productQuery(category: category),
           builder: (context, snapshot, _) {
             if (snapshot.isFetching) {
@@ -50,7 +50,7 @@ class ProductList extends StatelessWidget {
                     snapshot.fetchMore();
                   }
                   var productIndex = snapshot.docs[index];
-                  Product product = productIndex.data();
+                  ProductDepracated product = productIndex.data();
                   String productId = productIndex.id;
                   return CatalogProductcard(productId: productId, product: product,index: index);
                 },
@@ -72,7 +72,7 @@ class CatalogProductcard extends StatelessWidget {
   }) : super(key: key);
 
   final String productId;
-  final Product product;
+  final ProductDepracated product;
   final int index;
 
   @override

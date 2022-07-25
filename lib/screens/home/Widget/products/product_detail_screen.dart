@@ -6,11 +6,11 @@ import 'package:tryit_customer_app/firebase_services.dart';
 import 'package:get/get.dart';
 import 'package:tryit_customer_app/models/CartController.dart';
 import 'package:tryit_customer_app/screens/home/Widget/products/cart_screendeprecated.dart';
-import '../../../../models/Product.dart';
+import '../../../../models/ProductDepracated.dart';
 import '../../../../models/ProductController.dart';
 
 class ProductDetails extends StatefulWidget {
-  final Product? product;
+  final ProductDepracated? product;
   final String? productId;
   final int index;
 

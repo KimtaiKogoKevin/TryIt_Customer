@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tryit_customer_app/blocs/cart/cart_bloc.dart';
 import 'package:tryit_customer_app/blocs/wishlist/wishlist_bloc.dart';
-import 'package:tryit_customer_app/models/Product2.dart';
+import 'package:tryit_customer_app/models/Product.dart';
 import 'package:tryit_customer_app/screens/category/categoryCarouselCardItem.dart';
 import 'package:tryit_customer_app/screens/home/Widget/custom_appBar.dart';
 import 'package:tryit_customer_app/screens/home/Widget/products/ProductCarousel.dart';
@@ -13,13 +13,13 @@ class ProductScreen extends StatelessWidget {
 
   const ProductScreen({Key? key, required this.product}) : super(key: key);
 
-  static Route route({required Product2 product}) {
+  static Route route({required Product product}) {
     return MaterialPageRoute(
         settings: const RouteSettings(name: routeName),
         builder: (_) => ProductScreen(product: product));
   }
 
-  final Product2 product;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +50,7 @@ class ProductScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Text(
-                            'Name: ${product.name}',
+                            'Name: ${product.brandName}',
                             style: Theme.of(context)
                                 .textTheme
                                 .headline3!
@@ -61,7 +61,7 @@ class ProductScreen extends StatelessWidget {
                           width: 10,
                         ),
                         Expanded(
-                            child: Text('Price: KSH ${product.price} ',
+                            child: Text('Price: KSH ${product.regularPrice} ',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline4!

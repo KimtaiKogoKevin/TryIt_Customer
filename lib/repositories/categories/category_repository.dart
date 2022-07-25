@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:tryit_customer_app/models/Category.dart';
 import 'package:tryit_customer_app/models/MainCategory.dart';
 
-import '../models/SubCategory.dart';
+import '../../models/SubCategory.dart';
 import 'base_category_repository.dart';
 
 class CategoryRepository extends BaseCategoryRepository {

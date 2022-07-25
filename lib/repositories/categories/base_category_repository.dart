@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../models/Category.dart';
-import '../models/MainCategory.dart';
-import '../models/SubCategory.dart';
+import '../../models/Category.dart';
+import '../../models/MainCategory.dart';
+import '../../models/SubCategory.dart';
 
 abstract class BaseCategoryRepository {
 

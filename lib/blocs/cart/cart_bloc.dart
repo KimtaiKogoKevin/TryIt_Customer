@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../models/Product2.dart';
+import '../../models/Product.dart';
 import '../../models/cart_model.dart';
 
 part 'cart_event.dart';

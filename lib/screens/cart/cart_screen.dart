@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart ';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tryit_customer_app/models/Product2.dart';
+import 'package:tryit_customer_app/models/Product.dart';
 
 import '../../blocs/cart/cart_bloc.dart';
 import '../../blocs/wishlist/wishlist_bloc.dart';
@@ -200,7 +200,7 @@ class CartScreen extends StatelessWidget {
 
 class CartProductCard extends StatelessWidget {
   const CartProductCard({Key? key, required this.product , required this.quantity}) : super(key: key);
-  final Product2 product;
+  final Product product;
   final int quantity;
 
   @override
@@ -209,7 +209,7 @@ class CartProductCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Row(
         children: [
-          Image.network(product.imageUrl,
+          Image.network(product.imageUrls.toString(),
               width: 100, height: 80, fit: BoxFit.cover),
           const SizedBox(width: 10),
           Expanded(
@@ -217,11 +217,11 @@ class CartProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  product.name,
+                  product.brandName!,
                   style: Theme.of(context).textTheme.headline5,
                 ),
                 Text(
-                  'Sh ${product.price}',
+                  'Sh ${product.regularPrice}',
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ],

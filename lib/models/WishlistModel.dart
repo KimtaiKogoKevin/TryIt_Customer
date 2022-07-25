@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-import 'Product2.dart';
+import 'Product.dart';
 
 class WishList extends Equatable {
 
-  final List <Product2> products;
+  final List <Product> products;
   const WishList({
-    this.products = const <Product2>[]
+    this.products = const <Product>[]
 });
   @override
   // TODO: implement props

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:intl/intl.dart';
 
-import 'models/Product.dart';
+import 'models/ProductDepracated.dart';
 
 class FirebaseService {
   CollectionReference homeBanner =
@@ -24,14 +24,14 @@ class FirebaseService {
 
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
-  Stream<List<Product>> getAllProducts() {
+  Stream<List<ProductDepracated>> getAllProducts() {
     return _firebaseFirestore
         .collection('Products')
         .snapshots()
         .map((snapshot) {
       // print(snapshot);
 
-      return snapshot.docs.map((doc) => Product.fromSnapshot(doc)).toList();
+      return snapshot.docs.map((doc) => ProductDepracated.fromSnapshot(doc)).toList();
     });
   }
 }

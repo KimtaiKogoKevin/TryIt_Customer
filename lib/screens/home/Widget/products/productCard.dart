@@ -3,14 +3,14 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
 import 'package:tryit_customer_app/models/CartController.dart';
 
-import '../../../../models/Product.dart';
+import '../../../../models/ProductDepracated.dart';
 import '../../../../models/ProductController.dart';
 import 'cart_total.dart';
 class CartProductCard extends StatelessWidget {
   final CartController controller;
   final int quantity;
   final int index;
-  final Product product;
+  final ProductDepracated product;
 
    CartProductCard(
       {Key? key,

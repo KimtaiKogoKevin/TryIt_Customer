@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/wishlist/wishlist_bloc.dart';
-import '../models/Product2.dart';
+import '../models/Product.dart';
 import 'home/Widget/customAppBar2.dart';
 import 'home/Widget/custom_appBar.dart';
 import 'home/Widget/products/productCard2.dart';

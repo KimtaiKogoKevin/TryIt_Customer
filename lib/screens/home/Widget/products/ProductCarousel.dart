@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tryit_customer_app/screens/home/Widget/products/productCard2.dart';
 
-import '../../../../models/Product2.dart';
+import '../../../../models/Product.dart';
 
 class ProductCarousel extends StatelessWidget {
-  final List <Product2> products;
+  final List <Product> products;
   const ProductCarousel({Key? key , required  this.products}) : super(key: key);
 
   @override

@@ -1,82 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:equatable/equatable.dart';
 
-import 'package:flutter/material.dart';
-import 'package:tryit_customer_app/firebase_services.dart';
-
-FirebaseService services = FirebaseService();
-
-class Product {
-  Product(
-      {this.productName,
-        this.productDescription,
-        this.regularPrice,
-        this.discountPrice,
-        this.category,
-        this.mainCategory,
-        this.subCategory,
-        this.discountDateSchedule,
-        this.skuNumber,
-        this.manageInventory,
-        this.chargeShipping,
-        this.shippingCharge,
-        this.brandName,
-        this.stockOnHand,
-        this.reorderLevel,
-        this.sizeList,
-        this.otherDetails,
-        this.selectedUnit,
-        this.imageUrls,
-        this.seller,
-        this.approved,
-        this.productId});
-
-  static Product fromSnapshot(DocumentSnapshot snap){
-    Product  product = Product(
-      productName: snap['productName'],
-      discountPrice: snap['discountPrice'] ,
-      imageUrls: snap['imageUrls'],
-
-    );
-    return product;
-  }
-
-  Product.fromJson(Map<String, Object?> json)
-      : this(
-    approved: json['approved']! == null ? null : json['approved'] as bool,
-    brandName: json['brandName']! == null ? null : json['brandName'] as String,
-    category: json['category']!  == null ? null : json['category'] as String,
-    chargeShipping: json['chargeShipping']! as bool,
-    manageInventory: json['manageInventory']! as bool,
-    discountDateSchedule: json['discountDateSchedule'] == null ? null : json['discountDateSchedule'] as Timestamp,
-    discountPrice: json['discountPrice']! == null ? null : json['discountPrice'] as int,
-    imageUrls: json['imageUrls']! == null ? null : json['imageUrls'] as List,
-    mainCategory: json['mainCategory'] ==  null ? null : json['mainCategory'] as String,
-    otherDetails: json['otherDetails']! == null ? null : json['otherDetails'] as String,
-    productDescription: json['productDescription']! == null ? null : json['productDescription'] as String,
-    productName: json['productName']! == null ? null : json['productName'] as String,
-    regularPrice: json['regularPrice']! == null ? null : json['regularPrice'] as int,
-    reorderLevel: json['reorderLevel']! == null ? null : json['reorderLevel'] as int,
-    selectedUnit: json['selectedUnit']! == null ? null : json['selectedUnit'] as String,
-    sizeList: json['sizeList'] == null ? null : json['sizeList'] as List,
-    seller: json['seller']! == null ? null : json['seller'] as Map<dynamic, dynamic>,
-    shippingCharge: json['shippingCharge']! == null ? null : json['shippingCharge'] as int,
-    skuNumber: json['skuNumber']! == null ? null : json['skuNumber'] as int,
-    stockOnHand: json['stockOnHand']! == null ? null : json['stockOnHand'] as int,
-    subCategory: json['subCategory'] == null ? null : json['subCategory'] as String,
-  );
-
+class Product extends Equatable {
   final String? productName;
   final String? productDescription;
-  final int? regularPrice;
-  final int? discountPrice;
+  final num? regularPrice;
+  final num? discountPrice;
   final String? category;
   final String? mainCategory;
   final String? subCategory;
-  late final Timestamp? discountDateSchedule;
+   final Timestamp? discountDateSchedule;
   final int? skuNumber;
-  late final bool? manageInventory;
+   final bool? manageInventory;
   final bool? chargeShipping;
-  late final int? shippingCharge;
+   final int? shippingCharge;
   final String? brandName;
   final int? stockOnHand;
   final int? reorderLevel;
@@ -85,41 +22,114 @@ class Product {
   final String? selectedUnit;
   final List? imageUrls;
   final bool? approved;
+  final bool? isRecommended;
+  final bool? isPopular;
+
+
   final Map? seller;
   final String? productId;
 
-  Map<String, Object?> toJson() {
-    return {
-      'approved': approved,
-      'brandName': brandName,
-      'category': category,
-      'chargeShipping': chargeShipping,
-      'discountDateSchedule': discountDateSchedule,
-      'discountPrice': discountPrice,
-      'imageUrls': imageUrls,
-      'mainCategory': mainCategory,
-      'manageInventory': manageInventory,
-      'otherDetails': otherDetails,
-      'productDescription': productDescription,
-      'productName': productName,
-      'regularPrice': regularPrice,
-      'reorderLevel': reorderLevel,
-      'sizeList': sizeList,
-      'selectedUnit': selectedUnit,
-      'shippingCharge': shippingCharge,
-      'stockOnHand': stockOnHand,
-      'skuNumber': skuNumber,
-      'subCategory': subCategory,
-      'seller': seller,
-    };
-  }
-}
+  const Product({
+  this.productName,
+  this.productDescription,
+  this.regularPrice,
+  this.discountPrice,
+  this.category,
+  this.mainCategory,
+  this.subCategory,
+  this.discountDateSchedule,
+  this.skuNumber,
+  this.manageInventory,
+  this.chargeShipping,
+  this.shippingCharge,
+  this.brandName,
+  this.stockOnHand,
+  this.reorderLevel,
+  this.sizeList,
+  this.otherDetails,
+  this.selectedUnit,
+  this.imageUrls,
+  this.seller,
+  this.approved,
+  this.productId,
+  this.isRecommended,
+   this.isPopular,
+  });
 
-productQuery({category}) {
-  return FirebaseFirestore.instance.collection('Products')
-      .where('approved', isEqualTo: true).where('category', isEqualTo: category).withConverter<Product>(
-    fromFirestore: (snapshot, options) =>
-        Product.fromJson(snapshot.data()!),
-    toFirestore: (product, _) => product.toJson(),
-  );
-}
+  @override
+  // TODO: implement props
+  List<Object?> get props =>
+      [brandName, category, imageUrls,productName, regularPrice ,productName,isPopular, isRecommended];
+
+  static Product fromSnapshot(DocumentSnapshot snap){
+    Product product = Product (category: snap['category'], isPopular: snap['isPopular'], brandName: snap['brandName'], isRecommended: snap['isRecommended'], imageUrls: snap['imageUrls'], regularPrice: snap['regularPrice'] , productName: snap['productName']);
+    return product;
+  }
+//
+//   static List<Product> products = [
+//     const Product(
+//         name: 'product1',
+//         category: 'category1',
+//         price: 3.00,
+//         imageUrl:
+//             'https://images.unsplash.com/photo-1540574163026-643ea20ade25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+//         isRecommended: true,
+//         isPopular: false),
+//     const Product(
+//         name: 'product2',
+//         category: 'category2',
+//         price: 3.00,
+//         imageUrl:
+//             'https://images.unsplash.com/photo-1551298370-9d3d53740c72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+//         isRecommended: true,
+//         isPopular: false),
+//     const Product(
+//         name: 'product3',
+//         category: 'category3',
+//         price: 3.00,
+//         imageUrl:
+//             'https://images.unsplash.com/photo-1551298370-9d3d53740c72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+//         isRecommended: true,
+//         isPopular: false),
+//     const Product(
+//         name: 'product4',
+//         category: 'category4',
+//         price: 3.00,
+//         imageUrl:
+//             'https://images.unsplash.com/photo-1551298370-9d3d53740c72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+//         isRecommended: false,
+//         isPopular: true),
+//     const Product(
+//         name: 'product5',
+//         category: 'category5',
+//         price: 3.00,
+//         imageUrl:
+//             'https://images.unsplash.com/photo-1551298370-9d3d53740c72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+//         isRecommended: false,
+//         isPopular: true),
+//     const Product(
+//         name: 'product5',
+//         category: 'category5',
+//         price: 3.00,
+//         imageUrl:
+//             'https://images.unsplash.com/photo-1551298370-9d3d53740c72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+//         isRecommended: false,
+//         isPopular: true),
+//     const Product(
+//         name: 'product5',
+//         category: 'category5',
+//         price: 3.00,
+//         imageUrl:
+//             'https://images.unsplash.com/photo-1551298370-9d3d53740c72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+//         isRecommended: false,
+//         isPopular: true),
+//     const Product(
+//         name: 'product5',
+//         category: 'category5',
+//         price: 3.00,
+//         imageUrl:
+//             'https://images.unsplash.com/photo-1551298370-9d3d53740c72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZ1cm5pdHVyZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+//         isRecommended: false,
+//         isPopular: true),
+//   ];
+ }
