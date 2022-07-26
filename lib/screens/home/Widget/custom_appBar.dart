@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../cart/cart_screen.dart';
+
 class CustomAppBar extends StatefulWidget with PreferredSizeWidget {
   const CustomAppBar({Key? key}) : super(key: key);
 
@@ -37,7 +39,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
       ) ,
       iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
       actions: [
-        IconButton(onPressed:(){}, icon: Icon(Icons.shopping_cart)),
+        IconButton(onPressed:(){
+          Navigator.pushNamed(context, '/cart');
+        }, icon: Icon(Icons.shopping_cart)),
         IconButton(onPressed:(){}, icon: Icon(Icons.apps_sharp)),
 
       ],

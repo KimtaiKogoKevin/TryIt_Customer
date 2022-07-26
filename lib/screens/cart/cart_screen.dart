@@ -37,7 +37,7 @@ class CartScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         elevation: 0),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/checkoutScreen');
+                      Navigator.pushNamed(context, '/checkoutscreen');
                     },
                     child: Text(
                       'Go to Checkout',
@@ -209,7 +209,7 @@ class CartProductCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Row(
         children: [
-          Image.network(product.imageUrls.toString(),
+          Image.network(product.imageUrls![0],
               width: 100, height: 80, fit: BoxFit.cover),
           const SizedBox(width: 10),
           Expanded(
