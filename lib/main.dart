@@ -8,6 +8,7 @@ import 'package:tryit_customer_app/config/app_router.dart';
 import 'package:tryit_customer_app/models/CartController.dart';
 import 'package:tryit_customer_app/repositories/categories/category_repository.dart';
 import 'package:tryit_customer_app/repositories/products/product_repository.dart';
+import 'package:tryit_customer_app/screens/home/Widget/cart/Checkout.dart';
 import 'package:tryit_customer_app/screens/home/home.dart';
 import 'package:tryit_customer_app/screens/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -56,7 +57,7 @@ class MyApp extends StatelessWidget {
           theme: theme(),
          // home: const HomeScreen(),
            onGenerateRoute: AppRouter.onGenerateRoute,
-           initialRoute: HomeScreen.routeName,
+           initialRoute: CheckoutScreen.routeName,
          //  routes: {
          //    '/': (context) => SplashScreen(),
          //    '/login': (context) => LoginPage(),

@@ -24,7 +24,7 @@ class HomeBody extends StatelessWidget {
           NewArrivals(),
           const CategoryCarousel(),
          // const CategoryWidget(),
-          RecommendedItem(),
+          const RecommendedItem(),
         ],
       ),
     );
