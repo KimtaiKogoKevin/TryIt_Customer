@@ -6,9 +6,10 @@ import '../../blocs/cart/cart_bloc.dart';
 import '../../blocs/wishlist/wishlist_bloc.dart';
 import '../../models/cart_model.dart';
 import '../home/Widget/custom_appBar.dart';
+import '../home/Widget/ordersummary.dart';
 
 class CartScreen extends StatelessWidget {
-  static const String routeName = '/cart';
+  static const String routeName = '/checkout';
 
   const CartScreen({Key? key}) : super(key: key);
 
@@ -106,6 +107,7 @@ class CartScreen extends StatelessWidget {
                           }
                         ),
                       ),
+                     // OrderSummary(),
                     ],
                   ),
                   Column(

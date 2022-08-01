@@ -6,7 +6,7 @@ import 'package:tryit_customer_app/screens/wishlist_screen.dart';
 import '../Authentication/Login.dart';
 import '../models/Product.dart';
 import '../screens/cart/cart_screen.dart';
-import '../screens/home/Widget/cart/Checkout.dart';
+import '../screens/home/Widget/checkout/Checkout.dart';
 
 
 class AppRouter {

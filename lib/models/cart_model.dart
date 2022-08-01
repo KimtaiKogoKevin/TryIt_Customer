@@ -30,10 +30,10 @@ class Cart extends Equatable {
   String get subtotalString => subtotal.toStringAsFixed(2);
 
   double deliveryFee(subtotal) {
-    if (subtotal >= 2500.00) {
-      return 0.0;
+    if (subtotal >= 1.00 && subtotal <= 3000) {
+      return 150.0;
     } else {
-      return 100.0;
+      return 0.0;
     }
   }
   double total(subtotal , deliveryFee){
@@ -41,7 +41,7 @@ class Cart extends Equatable {
   }
 
   String freeDelivery(subtotal) {
-    if (subtotal >= 2500.00) {
+    if (subtotal >= 25000.00) {
       return 'You have free Delivery';
     } else {
       double deficit = 2500.00 - subtotal;

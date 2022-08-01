@@ -8,6 +8,7 @@ class Checkout extends Equatable {
   final String? address;
   final String? city;
   final String? country;
+
   final String? zipCode;
   final List<Product>? products;
   final String? subtotal;

@@ -40,7 +40,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
       actions: [
         IconButton(onPressed:(){
-          Navigator.pushNamed(context, '/cart');
+          Navigator.pushNamed(context, '/checkout');
         }, icon: Icon(Icons.shopping_cart)),
         IconButton(onPressed:(){}, icon: Icon(Icons.apps_sharp)),
 
@@ -88,7 +88,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
     //                 onPressed: () {
     //                   Navigator.pushNamed(
     //                       context,
-    //                       '/cart'
+    //                       '/checkout'
     //                       ''
     //                       '');
     //                 },

@@ -410,7 +410,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   cartController.addProduct(widget.product!);
                 },
                 child: const Text(
-                  'Add to cart',
+                  'Add to checkout',
                 ),
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.green)),

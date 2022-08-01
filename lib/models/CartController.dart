@@ -7,13 +7,13 @@ import '../firebase_services.dart';
 import 'ProductDepracated.dart';
 
 class CartController extends GetxController {
-  // Add a dict to store the products in the cart
+  // Add a dict to store the products in the checkout
  // final RxMap _products={}.obs;
   final _products = {}.obs;
 
   FirebaseService service = FirebaseService();
 
-  //add product to cart
+  //add product to checkout
   void addProduct(ProductDepracated product) {
     if (_products.containsKey(product)) {
       _products[product] += 1;

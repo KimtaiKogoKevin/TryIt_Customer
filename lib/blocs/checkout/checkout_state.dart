@@ -13,6 +13,7 @@ class CheckoutLoaded extends CheckoutState {
   final String? fullName;
   final String? email;
   final String? address;
+
   final String? city;
   final String? country;
   final String? zipCode;

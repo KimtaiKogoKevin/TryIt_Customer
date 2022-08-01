@@ -25,7 +25,7 @@ class CustomNavBar extends StatelessWidget {
         height: 70,
         child: (screen == '/product')
             ? AddToCartNavBar(product: product!)
-            : (screen == '/cart')
+            : (screen == '/checkout')
             ? GoToCheckoutNavBar()
             : (screen == '/checkout')
             ? OrderNowNavBar() :
@@ -55,7 +55,7 @@ class HomeNavBar extends StatelessWidget {
         IconButton(
           icon: Icon(Icons.shopping_cart, color: Colors.white),
           onPressed: () {
-            Navigator.pushNamed(context, '/cart');
+            Navigator.pushNamed(context, '/checkout');
           },
         ),
         IconButton(
@@ -118,7 +118,7 @@ class AddToCartNavBar extends StatelessWidget {
               return ElevatedButton(
                 onPressed: () {
                   context.read<CartBloc>().add(AddProduct(product));
-                  Navigator.pushNamed(context, '/cart');
+                  Navigator.pushNamed(context, '/checkout');
                 },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,

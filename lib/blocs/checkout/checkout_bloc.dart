@@ -12,7 +12,7 @@ import '/blocs/blocs.dart';
 part 'checkout_event.dart';
 part 'checkout_state.dart';
 
-class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
+class  CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   final CartBloc _cartBloc;
   // final PaymentBloc _paymentBloc;
   final CheckoutRepository _checkoutRepository;

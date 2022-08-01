@@ -7,8 +7,9 @@ import 'package:tryit_customer_app/blocs/cart/cart_bloc.dart';
 import 'package:tryit_customer_app/config/app_router.dart';
 import 'package:tryit_customer_app/models/CartController.dart';
 import 'package:tryit_customer_app/repositories/categories/category_repository.dart';
+import 'package:tryit_customer_app/repositories/checkout/checkout_repository.dart';
 import 'package:tryit_customer_app/repositories/products/product_repository.dart';
-import 'package:tryit_customer_app/screens/home/Widget/cart/Checkout.dart';
+import 'package:tryit_customer_app/screens/home/Widget/checkout/Checkout.dart';
 import 'package:tryit_customer_app/screens/home/home.dart';
 import 'package:tryit_customer_app/screens/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -18,6 +19,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'Authentication/Login.dart';
 import 'blocs/blocs.dart';
 import 'blocs/catgeory/category_bloc.dart';
+import 'blocs/checkout/checkout_bloc.dart';
 import 'blocs/products/product_bloc.dart';
 import 'firebase_options.dart';
 
@@ -47,6 +49,13 @@ class MyApp extends StatelessWidget {
         BlocProvider(create:(_) => CartBloc()..add((LoadCart()))),
         BlocProvider(create:(_) => CategoryBloc(categoryRepository: CategoryRepository())..add((LoadCategories()))),
         BlocProvider(create:(_) => ProductBloc(productRepository: ProductRepository())..add((LoadProducts()))),
+        BlocProvider(
+          create: (context) => CheckoutBloc(
+            cartBloc: context.read<CartBloc>(),
+           // paymentBloc: context.read<PaymentBloc>(),
+            checkoutRepository: CheckoutRepository(),
+          ),
+        ),
 
 
 
@@ -57,7 +66,7 @@ class MyApp extends StatelessWidget {
           theme: theme(),
          // home: const HomeScreen(),
            onGenerateRoute: AppRouter.onGenerateRoute,
-           initialRoute: CheckoutScreen.routeName,
+           initialRoute: HomeScreen.routeName,
          //  routes: {
          //    '/': (context) => SplashScreen(),
          //    '/login': (context) => LoginPage(),
