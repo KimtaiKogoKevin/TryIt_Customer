@@ -59,7 +59,7 @@ class Product extends Equatable {
   @override
   // TODO: implement props
   List<Object?> get props =>
-      [brandName, category, imageUrls,productName, regularPrice ,productName,isPopular, isRecommended];
+      [brandName, category, imageUrls,productName, regularPrice ,isPopular, isRecommended];
 
   static Product fromSnapshot(DocumentSnapshot snap){
     Product product = Product (category: snap['category'], isPopular: snap['isPopular'], brandName: snap['brandName'], isRecommended: snap['isRecommended'], imageUrls: snap['imageUrls'], regularPrice: snap['regularPrice'] , productName: snap['productName']);

@@ -49,3 +49,4 @@ class ConfirmCheckout extends CheckoutEvent {
   @override
   List<Object?> get props => [checkout];
 }
+

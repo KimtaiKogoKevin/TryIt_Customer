@@ -9,6 +9,8 @@ import 'package:tryit_customer_app/screens/home/Widget/custom_appBar.dart';
 import 'package:tryit_customer_app/screens/home/Widget/newarrival.dart';
 import 'package:tryit_customer_app/screens/home/Widget/searchInput.dart';
 
+import '../cart/cart_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   final int? index;
 
@@ -27,7 +29,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int pageIndex = 0;
-  final pages = [HomeBody(), CategoryScreen(), Clip(), MyAccount()];
+  final pages = [HomeBody(), CategoryScreen(), CartScreen(),];
 
   @override
   void initState() {
@@ -89,25 +91,6 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               icon: pageIndex == 1
                   ? const Icon(
-                      Icons.work_rounded,
-                      color: Colors.white,
-                      size: 35,
-                    )
-                  : const Icon(
-                      Icons.work_outline_outlined,
-                      color: Colors.white,
-                      size: 35,
-                    ),
-            ),
-            IconButton(
-              enableFeedback: false,
-              onPressed: () {
-                setState(() {
-                  pageIndex = 2;
-                });
-              },
-              icon: pageIndex == 2
-                  ? const Icon(
                       Icons.widgets_rounded,
                       color: Colors.white,
                       size: 35,
@@ -122,21 +105,40 @@ class _HomeScreenState extends State<HomeScreen> {
               enableFeedback: false,
               onPressed: () {
                 setState(() {
-                  pageIndex = 3;
+                  pageIndex = 2;
                 });
               },
-              icon: pageIndex == 3
+              icon: pageIndex == 2
                   ? const Icon(
-                      Icons.person,
+                      Icons.shopping_cart,
                       color: Colors.white,
                       size: 35,
                     )
                   : const Icon(
-                      Icons.person_outline,
+                      Icons.shopping_cart_checkout_outlined,
                       color: Colors.white,
                       size: 35,
                     ),
             ),
+            // IconButton(
+            //   enableFeedback: false,
+            //   onPressed: () {
+            //     setState(() {
+            //       pageIndex = 3;
+            //     });
+            //   },
+            //   icon: pageIndex == 3
+            //       ? const Icon(
+            //           Icons.person,
+            //           color: Colors.white,
+            //           size: 35,
+            //         )
+            //       : const Icon(
+            //           Icons.person_outline,
+            //           color: Colors.white,
+            //           size: 35,
+            //         ),
+            // ),
           ],
         ),
       ),

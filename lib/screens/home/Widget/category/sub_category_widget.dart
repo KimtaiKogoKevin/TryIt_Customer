@@ -4,14 +4,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/firestore.dart';
+import 'package:tryit_customer_app/models/Product.dart';
+import 'package:tryit_customer_app/screens/home/Widget/products/product_detail_screen.dart';
+import 'package:tryit_customer_app/screens/home/Widget/products/products_detail_screen.dart';
 
 import '../../../../models/MainCategory.dart';
 import '../../../../models/SubCategoryDeprecated.dart';
 
 class SubCategoryWidget extends StatelessWidget {
   final String? selectedSubCat;
-
-  const SubCategoryWidget({this.selectedSubCat, Key? key}) : super(key: key);
+  final Product? product;
+  const SubCategoryWidget({  this.product,this.selectedSubCat, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,26 +63,33 @@ class SubCategoryWidget extends StatelessWidget {
                           snapshot.fetchMore();
                         }
 
-                        return Column(children: [
-                          SizedBox(
-                          height: 40,
-                          width: 40,
-                          child: FittedBox(
-                              fit: BoxFit.contain,
-                              child: CachedNetworkImage(
-                                imageUrl:subCat.image!,
-                                placeholder: (context , _){
-                                  return Container(
-                                    height:60,
-                                    width:60,
-                                    color: Colors.grey.shade300,
-                                  );
-                                },
-                              ),
-                        ),
-                        ),
-                        Text(subCat.subCatName! , style: const TextStyle(fontSize: 12 ) , textAlign: TextAlign.center,)
-                        ]);
+                        return InkWell(
+                          onTap:  ()
+                          {
+                            Navigator.pushNamed(context, '/product', arguments: product);
+
+                          },
+                          child: Column(children: [
+                            SizedBox(
+                            height: 40,
+                            width: 40,
+                            child: FittedBox(
+                                fit: BoxFit.contain,
+                                child: CachedNetworkImage(
+                                  imageUrl:subCat.image!,
+                                  placeholder: (context , _){
+                                    return Container(
+                                      height:60,
+                                      width:60,
+                                      color: Colors.grey.shade300,
+                                    );
+                                  },
+                                ),
+                          ),
+                          ),
+                          Text(subCat.subCatName! , style: const TextStyle(fontSize: 12 ) , textAlign: TextAlign.center,)
+                          ]),
+                        );
                         },
                     );
                   })),

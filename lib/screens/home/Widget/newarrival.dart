@@ -13,7 +13,7 @@ class NewArrivals extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          SectionList('New Arrivals'),
+          SectionList('Categories'),
           //Container(
           //   height: 280,
           //   child: ListView.separated(

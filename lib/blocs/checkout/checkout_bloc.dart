@@ -10,10 +10,12 @@ import '../cart/cart_bloc.dart';
 import '/blocs/blocs.dart';
 
 part 'checkout_event.dart';
+
 part 'checkout_state.dart';
 
-class  CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
+class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   final CartBloc _cartBloc;
+
   // final PaymentBloc _paymentBloc;
   final CheckoutRepository _checkoutRepository;
   StreamSubscription? _cartSubscription;
@@ -28,21 +30,21 @@ class  CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
         // _paymentBloc = paymentBloc,
         _checkoutRepository = checkoutRepository,
         super(
-        cartBloc.state is CartLoaded
-            ? CheckoutLoaded(
-          products: (cartBloc.state as CartLoaded).cart.products,
-          deliveryFee:
-          (cartBloc.state as CartLoaded).cart.deliveryFeeString,
-          subtotal: (cartBloc.state as CartLoaded).cart.subtotalString,
-          total: (cartBloc.state as CartLoaded).cart.totalString,
-        )
-            : CheckoutLoading(),
-      ) {
+          cartBloc.state is CartLoaded
+              ? CheckoutLoaded(
+                  products: (cartBloc.state as CartLoaded).cart.products,
+                  deliveryFee:
+                      (cartBloc.state as CartLoaded).cart.deliveryFeeString,
+                  subtotal: (cartBloc.state as CartLoaded).cart.subtotalString,
+                  total: (cartBloc.state as CartLoaded).cart.totalString,
+                )
+              : CheckoutLoading(),
+        ) {
     on<UpdateCheckout>(_onUpdateCheckout);
     on<ConfirmCheckout>(_onConfirmCheckout);
 
     _cartSubscription = _cartBloc.stream.listen(
-          (state) {
+      (state) {
         if (state is CartLoaded)
           add(
             UpdateCheckout(cart: state.cart),
@@ -60,9 +62,9 @@ class  CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   }
 
   void _onUpdateCheckout(
-      UpdateCheckout event,
-      Emitter<CheckoutState> emit,
-      ) {
+    UpdateCheckout event,
+    Emitter<CheckoutState> emit,
+  ) {
     if (this.state is CheckoutLoaded) {
       final state = this.state as CheckoutLoaded;
       emit(
@@ -84,9 +86,9 @@ class  CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   }
 
   void _onConfirmCheckout(
-      ConfirmCheckout event,
-      Emitter<CheckoutState> emit,
-      ) async {
+    ConfirmCheckout event,
+    Emitter<CheckoutState> emit,
+  ) async {
     _checkoutSubscription?.cancel();
     if (this.state is CheckoutLoaded) {
       try {

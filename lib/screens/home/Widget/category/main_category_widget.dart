@@ -5,11 +5,13 @@ import 'package:tryit_customer_app/models/SubCategoryDeprecated.dart';
 import 'package:tryit_customer_app/screens/home/Widget/category/sub_category_widget.dart';
 
 import '../../../../models/MainCategory.dart';
+import '../../../../models/Product.dart';
 
 class MainCategoryWidget extends StatefulWidget {
    final String? selectedCat;
 
-  const MainCategoryWidget({required this.selectedCat,Key? key}) : super(key: key);
+
+   const MainCategoryWidget({  required this.selectedCat,Key? key}) : super(key: key);
 
   @override
   State<MainCategoryWidget> createState() => _MainCategoryWidgetState();
